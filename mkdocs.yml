@@ -1,0 +1,41 @@
+site_name: DataForge
+site_description: "Documentação do projeto"
+
+theme:
+  name: material
+  features:
+  - navigation.tabs
+
+  palette:
+    - media: "(prefers-color-scheme)"
+      toggle:
+        icon: material/brightness-auto
+        name: Switch to light mode
+
+    - media: "(prefers-color-scheme: light)"
+      scheme: default 
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-2
+        name: Switch to system preference
+
+  font:
+    text: Roboto
+    code: Roboto Mono
+    
+nav:
+  - Home: index.md
+  - Cenário atual do cliente: Visao_de_Produto/Cenario.md
+  - Solução porposta: Visao_de_Produto/Solucao.md
+  - Estratégia de Engenharia de Software: Visao_de_Produto/Estrategia.md
+  - Cronongramas e entregas: Visao_de_Produto/Cronograma.md
+  - Interação entre equipe e cliente: Visao_de_Produto/Interacao.md
+  - Lições aprendidas: Visao_de_Produto/Aprendizado.md
+
+docs_dir: DOCUMENTS
+site_dir: site
