@@ -40,6 +40,7 @@ nav:
     - Interação entre Equipe e Cliente: visao_produto/interacao.md
     - Lições Aprendidas: visao_produto/licoes.md
     - Referências Bibliográficas: visao_produto/referencias.md
+  - Entregas: visao_produto/entregas.md
 
 markdown_extensions:
   - admonition
