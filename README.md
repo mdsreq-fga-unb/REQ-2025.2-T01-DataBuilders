@@ -96,10 +96,10 @@ Este projeto é acadêmico, mas se você quiser contribuir:
     Certifique-se de seguir o padrão de documentação e organizar os arquivos .md na pasta docs/.
 
 ## 🔹 Links Rápidos
-- [Cenário atual do cliente](docs/cenario.md)
-- [Solução proposta](docs/solucao.md)
-- [Estratégias de Software](docs/estrategias.md)
-- [Cronograma e Entregas](docs/cronograma.md)
-- [Interação da Equipe e Cliente](docs/interacao.md)
-- [Lições aprendidas](docs/licoes.md)
-- [Referẽncias](docs/referencias.md)
+- [Cenário atual do cliente](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/cenario/)
+- [Solução proposta](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/solucao/)
+- [Estratégias de Software](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/estrategias/)
+- [Cronograma e Entregas](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/cronograma/)
+- [Interação da Equipe e Cliente](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/interacao/)
+- [Lições aprendidas](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/licoes/)
+- [Referências](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/referencias/)
