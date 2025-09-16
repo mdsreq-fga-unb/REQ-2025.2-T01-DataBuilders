@@ -1,41 +1,57 @@
-site_name: DataForge
-site_description: "Documentação do projeto"
+site_name: Data Builders
+
+site_description: Visão do Produto e Projeto
 
 theme:
   name: material
-  features:
-  - navigation.tabs
-
   palette:
-    - media: "(prefers-color-scheme)"
+    - scheme: default
+      primary: 'indigo'
+      accent: 'indigo'
       toggle:
-        icon: material/brightness-auto
-        name: Switch to light mode
-
-    - media: "(prefers-color-scheme: light)"
-      scheme: default 
+        icon: material/weather-night
+        name: "Ativar modo escuro"
+    - scheme: slate
+      primary: 'indigo'
+      accent: 'indigo'
       toggle:
-        icon: material/brightness-7
-        name: Switch to dark mode
-
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      toggle:
-        icon: material/brightness-2
-        name: Switch to system preference
-
+        icon: material/weather-sunny
+        name: "Voltar para modo claro"
   font:
     text: Roboto
     code: Roboto Mono
-    
+  features:
+    - navigation.tabs
+    - navigation.top
+    - navigation.sections
+    - content.code.annotate 
+    - content.tabs.link     
+    - instant                
+    - toc.integrate          
+    - navigation.expand      
+
 nav:
   - Home: index.md
-  - Cenário atual do cliente: Visao_de_Produto/Cenario.md
-  - Solução porposta: Visao_de_Produto/Solucao.md
-  - Estratégia de Engenharia de Software: Visao_de_Produto/Estrategia.md
-  - Cronongramas e entregas: Visao_de_Produto/Cronograma.md
-  - Interação entre equipe e cliente: Visao_de_Produto/Interacao.md
-  - Lições aprendidas: Visao_de_Produto/Aprendizado.md
+  - Projeto:
+    - Cenário Atual do Cliente: visao_produto/cenario.md
+    - Solução Proposta: visao_produto/solucao.md
+    - Estratégias de Engenharia: visao_produto/estrategias.md
+    - Cronograma e Entregas: visao_produto/cronograma.md
+    - Interação entre Equipe e Cliente: visao_produto/interacao.md
+    - Lições Aprendidas: visao_produto/licoes.md
+    - Referências Bibliográficas: visao_produto/referencias.md
 
-docs_dir: DOCUMENTS
-site_dir: site
+markdown_extensions:
+  - admonition
+  - codehilite
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.tasklist
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.tilde
+  - pymdownx.critic

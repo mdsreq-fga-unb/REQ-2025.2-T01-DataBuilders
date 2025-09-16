@@ -3,7 +3,7 @@ name: pages-build-deployment
 on:
   push:
     branches:
-      - main
+      - integracao-ghpages
 
 permissions:
   contents: read
