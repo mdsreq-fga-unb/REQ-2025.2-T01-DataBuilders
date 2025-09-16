@@ -3,7 +3,7 @@ name: pages-build-deployment
 on:
   push:
     branches:
-      - integracao-ghpages
+      - main
 
 permissions:
   contents: read
@@ -27,3 +27,6 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           path: ./site
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
