@@ -1,0 +1,1 @@
+documentar entrega, reunião de entrega e feedbacks e melhorias do cliente
