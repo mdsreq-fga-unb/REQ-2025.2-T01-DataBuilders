@@ -28,7 +28,13 @@ theme:
     - content.tabs.link     
     - instant                
     - toc.integrate          
-    - navigation.expand      
+    - navigation.expand
+    - navigation.index
+    - navigation.tracking
+  toc:
+    depth: 3
+    permalink: true
+    title: "Índice"
 
 nav:
   - Home: index.md
@@ -50,6 +56,9 @@ markdown_extensions:
   - meta
   - toc:
       permalink: true
+      permalink_title: "Link permanente para esta seção"
+      baselevel: 1
+      toc_depth: 3
   - pymdownx.superfences
   - pymdownx.tabbed
   - pymdownx.tasklist
