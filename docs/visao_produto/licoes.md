@@ -1,6 +1,6 @@
 # LIÇÕES APRENDIDAS
 
-## 6.1 Unidade 1
+## Unidade 1
 
 Durante a fase inicial do projeto, a equipe enfrentou desafios relacionados tanto à coordenação interna quanto ao envolvimento com o cliente. Esses pontos impactaram a comunicação e a definição de um ritmo de trabalho mais constante, mas foram gradualmente superados com ações de melhoria específicas.  
 

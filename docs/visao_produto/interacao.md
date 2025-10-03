@@ -1,6 +1,6 @@
 # INTERAÇÃO ENTRE EQUIPE E CLIENTE
 
-## 5.1 Composição da Equipe
+## Composição da Equipe
 
 | Papel | Descrição | Responsável | Participantes |
 |-------|-----------|------------|---------------|
@@ -10,7 +10,7 @@
 | Analista de QA | Garante a qualidade do produto, executando testes de funcionalidade, performance e usabilidade | Mariana Pereira | Mariana Pereira e Davi Leite |
 | Analista de requisitos | Define os requisitos funcionais e não funcionais do sistema e garante que eles sejam atendidos | Camile Oliveira | Camile Oliveira |
 
-## 5.2 Comunicação
+## Comunicação
 
 **Ferramentas de comunicação:**
 
@@ -28,7 +28,7 @@
 - **Frequência de Interações com o Cliente:**  
   - **Reuniões Quinzenais:** realizadas a cada 15 dias, de forma presencial, na sala do professor Maurício. Nessas reuniões serão feitos alinhamentos gerais e a apresentação das entregas previstas.  
 
-## 5.3 Processo de Validação
+## Processo de Validação
 
 1. **Validação de Requisitos:** antes do início do desenvolvimento, os requisitos levantados serão representados em protótipos de interface. Esses protótipos serão avaliados e validados tanto pela equipe de desenvolvimento quanto pelo cliente, garantindo alinhamento quanto às expectativas e necessidades.  
 2. **Desenvolvimento e Testes Internos:** após a validação, inicia-se o desenvolvimento. Concluída essa etapa, a equipe de QA realizará testes de sistema para assegurar que as funcionalidades estejam corretas, estáveis e de acordo com os requisitos aprovados.  

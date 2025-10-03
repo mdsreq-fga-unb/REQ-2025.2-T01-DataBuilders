@@ -1,6 +1,6 @@
 # Requisitos de Software
 
-## 7.1 Lista de Requisitos Funcionais
+## Lista de Requisitos Funcionais
 
 Os requisitos funcionais descrevem as funcionalidades específicas que o sistema deve implementar para atender às necessidades do produto, incluindo integrações, processos e interações do usuário com o sistema.
 
@@ -56,7 +56,7 @@ Permitir que administrador/professor e monitores possam editar avisos.
 Permitir que administrador/professor e monitores possam deletar avisos.
 
 
-## 7.2 Lista de Requisitos Não Funcionais
+## Lista de Requisitos Não Funcionais
 
 Os requisitos não funcionais especificam as qualidades e restrições do sistema, como desempenho, segurança e usabilidade, que são essenciais para garantir a qualidade do software. Para a classificação, foi utilizado o modelo URPS+.
 

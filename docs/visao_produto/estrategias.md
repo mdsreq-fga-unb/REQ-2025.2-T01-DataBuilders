@@ -1,12 +1,12 @@
 # ESTRATÉGIAS DE ENGENHARIA DE SOFTWARE
 
-## 3.1 Estratégia Priorizada
+## Estratégia Priorizada
 
 - **Abordagem:** Foi adotada uma abordagem ágil, considerando que o cliente possui elevado nível de conhecimento técnico e disponibilidade para participar de reuniões semanais.  
 - **Ciclo de vida:** Optou-se pelo ciclo de vida Iterativo e Incremental, uma vez que o projeto prevê entregas contínuas para validação do cliente e os requisitos já se encontram estáveis.  
 - **Processo de Engenharia de Software:** RAD, pois a equipe tem pouca experiência com desenvolvimento e um curto prazo.  
 
-## 3.2 Quadro Comparativo
+## Quadro Comparativo
 
 | Categoria | RAD | XP |
 |-----------|-----|----|
@@ -17,7 +17,7 @@
 | Foco | Organização e fases | Qualidade do código |
 | Adequação ao projeto | Viável para situações na qual é uma equipe mais iniciante e com requisitos bem estáveis | Possui uma alta qualidade, porém exige uma maturidade maior da equipe |
 
-## 3.3 Justificativa
+## Justificativa
 
 A partir da análise comparativa entre os processos RAD e XP, conclui-se que o mais adequado ao nosso projeto é o RAD.  
 
