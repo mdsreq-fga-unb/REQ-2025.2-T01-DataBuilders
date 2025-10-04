@@ -47,8 +47,10 @@ nav:
     - Interação entre Equipe e Cliente: visao_produto/interacao.md
     - Lições Aprendidas: visao_produto/licoes.md
     - Requisitos de Software: visao_produto/requisitos.md
+    - User Stories: visao_produto/user_stories.md
     - Referências Bibliográficas: visao_produto/referencias.md
-  - Entregas: visao_produto/entregas.md
+  - Entregas: 
+    - Unidade 1: entregas/unidade1.md
 
 markdown_extensions:
   - admonition
@@ -56,6 +58,7 @@ markdown_extensions:
   - footnotes
   - meta
   - toc:
+      title: "Conteúdo da página"
       permalink: true
       permalink_title: "Link permanente para esta seção"
       baselevel: 1
