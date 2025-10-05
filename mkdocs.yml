@@ -38,7 +38,10 @@ theme:
     end_level: 2
 
 nav:
-  - Home: index.md
+  - Home:
+    - index.md
+    - Equipe: home/equipe.md
+
   - Projeto:
     - Cenário Atual do Cliente: visao_produto/cenario.md
     - Solução Proposta: visao_produto/solucao.md
