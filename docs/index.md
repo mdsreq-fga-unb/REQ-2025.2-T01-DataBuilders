@@ -48,6 +48,7 @@ O objetivo principal é oferecer ao professor uma ferramenta que seja intuitiva,
 ├─ 📁 docs/                       # Pasta com todos os arquivos de documentação
 │  ├─ 🏠 home/                    # Introdução ao projeto
 │  ├─ 📁 visao_produto/           # Visão geral do projeto
+│  ├─ 📁 entregas/                # Entregas do projeto por unidade
 ├─ ⚙️ mkdocs.yml                  # Configuração do MkDocs (tema, navegação, plugins)
 └─ 📘 README.md                   # README do projeto
 ```
