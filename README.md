@@ -6,6 +6,17 @@
 
 O objetivo principal é oferecer ao professor uma ferramenta que seja intuitiva, autônoma e que melhore a experiência de aprendizado dos alunos, centralizando informações e exemplos de algoritmos em múltiplas linguagens.
 
+## 🔹 Links Rápidos
+- [Cenário atual do cliente](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/cenario/)
+- [Solução proposta](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/solucao/)
+- [Estratégias de Software](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/estrategias/)
+- [Cronograma e Entregas](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/cronograma/)
+- [Interação da Equipe e Cliente](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/interacao/)
+- [Requisitos](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/requisitos/)
+- [User Stories](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/user_stories/)
+- [Lições aprendidas](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/licoes/)
+- [Referências](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/referencias/)
+
 ## 🔹 Visão Geral
 
 - **Cliente:** Professor Maurício Serrano (UnB, FCTE)  
@@ -30,21 +41,15 @@ O objetivo principal é oferecer ao professor uma ferramenta que seja intuitiva,
 
 ---
 
-## Estrutura do Projeto MkDocs 📂
+## Estrutura da documentação 📂
 
 ```text
 📁 data-builders-docs/
-├─ 📁 docs/                         # Pasta com todos os arquivos de documentação
-│  ├─ 🏠 index.md                    # Página inicial da documentação
-│  ├─ 📄 cenario-atual.md            # Cenário atual do cliente
-│  ├─ 📄 solucao-proposta.md         # Solução proposta
-│  ├─ 📄 estrategia-software.md      # Estratégias de engenharia de software
-│  ├─ 📄 cronograma-entregas.md      # Cronograma e entregas
-│  ├─ 📄 interacao-equipe.md         # Interação da equipe e com o cliente
-│  ├─ 📄 licoes-aprendidas.md        # Lições aprendidas do projeto
-│  └─ 📄 referencias.md              # Referências bibliográficas
-├─ ⚙️ mkdocs.yml                     # Configuração do MkDocs (tema, navegação, plugins)
-└─ 📘 README.md                      # README do projeto
+├─ 📁 docs/                       # Pasta com todos os arquivos de documentação
+│  ├─ 🏠 home/                    # Introdução ao projeto
+│  ├─ 📁 visao_produto/           # Visão geral do projeto
+├─ ⚙️ mkdocs.yml                  # Configuração do MkDocs (tema, navegação, plugins)
+└─ 📘 README.md                   # README do projeto
 ```
 ---
 
@@ -94,12 +99,3 @@ Este projeto é acadêmico, mas se você quiser contribuir:
 5. Abra um Pull Request descrevendo suas alterações
 
     Certifique-se de seguir o padrão de documentação e organizar os arquivos .md na pasta docs/.
-
-## 🔹 Links Rápidos
-- [Cenário atual do cliente](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/cenario/)
-- [Solução proposta](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/solucao/)
-- [Estratégias de Software](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/estrategias/)
-- [Cronograma e Entregas](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/cronograma/)
-- [Interação da Equipe e Cliente](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/interacao/)
-- [Lições aprendidas](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/licoes/)
-- [Referências](https://mdsreq-fga-unb.github.io/REQ-2025.2-T01-DataBuilders/visao_produto/referencias/)
