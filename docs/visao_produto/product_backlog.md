@@ -11,21 +11,25 @@ As funcionalidades estão organizadas segundo o método **MoSCoW**, que define p
 
 O objetivo desta página é fornecer à equipe uma visão clara das prioridades do projeto, ajudando todos a se manterem alinhados quanto às entregas, ao planejamento do MVP e às decisões de desenvolvimento, garantindo que o esforço esteja sempre focado nas funcionalidades mais relevantes para o sucesso do produto.
 
+Nota-se que os objetivos específicos foram previamente listados na página "Solução", na qual foram melhor detalhados. Mas, reforçando, tais objetivos se resumem a:
 
+- **OE1**: Autonomia e disponibilidade da página para usuários
+- **OE2**: Postagem e fornecimento de materiais de aula
+- **OE3**: Integridade do material e apresentação de códigos exemplares
 
-| Prioridade      | ID   | Descrição                                      | MVP |
-| --------------- | ---- | -----------------------------------------------| --- |
-| **Must Have**   | US01 | Buscar Repositórios do GitHub                  | ✅   |
-|                 | US02 | Consultar Materiais de Aula                    | ✅   |
-|                 | US03 | Autenticar Usuários                            | ✅   |
-|                 | US05 | Publicar Materiais de Aula                     | ✅   |
-|                 | US06 | Editar Materiais de Aula                       | ✅   |
-|                 | US07 | Deletar Materiais de Aula                      | ✅   |
-| **Should Have** | US04 | Gerenciar Contas de Usuários                   | ✅   |
-|                 | US08 | Versionamento de Conteúdo                      |     |
-|                 | US09 | Favoritar Repositórios                         |     |
-| **Could Have**  | US10 | Publicar Avisos                                |     |
-|                 | US11 | Editar Avisos                                  |     |
-|                 | US12 | Deletar Avisos                                 |     |
-| **Won’t Have**  | —    | (nenhuma descartada ainda)                     |     |
+| Objetivo Específico | ID   | Descrição                     | Prioridade      | MVP |
+| ------------------- | ---- | ----------------------------- | --------------- | --- |
+| OE3                 | US01 | Buscar Repositórios do GitHub | **Must Have**   | ✅   |
+| OE2                 | US02 | Consultar Materiais de Aula   | **Must Have**   | ✅   |
+| OE1                 | US03 | Autenticar Usuários           | **Must Have**   | ✅   |
+| OE1                 | US04 | Gerenciar Contas de Usuários  | **Should Have** | ✅   |
+| OE2                 | US05 | Publicar Materiais de Aula    | **Must Have**   | ✅   |
+| OE2                 | US06 | Editar Materiais de Aula      | **Must Have**   | ✅   |
+| OE2                 | US07 | Deletar Materiais de Aula     | **Must Have**   | ✅   |
+| OE2                 | US08 | Versionamento de Conteúdo     | **Should Have** |     |
+| OE1                 | US09 | Favoritar Repositórios        | **Should Have** |     |
+| OE3                 | US10 | Publicar Avisos               | **Could Have**  |     |
+| OE3                 | US11 | Editar Avisos                 | **Could Have**  |     |
+| OE3                 | US12 | Deletar Avisos                | **Could Have**  |     |
+| —                   | —    | (nenhuma descartada ainda)    | **Won’t Have**  |     |
 
