@@ -7,21 +7,6 @@ Os requisitos funcionais descrevem as funcionalidades específicas que o sistema
 ### RF01 - Buscar repositórios em diferentes organizações do GitHub
 Permitir buscas por termos gerais e por filtros suportados pela biblioteca `@octokit/rest`.
 
-- RF - Listagem de Repositórios
-Retornar uma lista de repositórios com metadados básicos, como nome, dono, link, linguagem e contagem de estrelas.
-
-- RF - Interface de Busca
-Apresentar um campo de busca principal de texto.
-
-- RF - Aplicação de Filtros
-Permitir a configuração de filtros visuais, como linguagem, presença de README, ordenação e paginação.
-
-- RF - Exibição de Resultados
-Exibir, por resultado, metadados úteis e um link direto para o repositório.
-
-- RF - Busca Full-Text Local
-Indexar READMEs e conteúdos cacheados para permitir busca local por relevância, retornando snippets e rankeamento.
-
 ### RF02 - Consultar materiais de aula
 Permitir que usuários consultem os materiais de aula do professor para seus estudos.
 
@@ -40,7 +25,7 @@ Permitir que administrador/professor e monitores possam editar os itens de conte
 ### RF07 - Deletar materiais de aula
 Permitir que administrador/professor e monitores possam deletar os itens de conteúdo.
 
-### RF08 - Versionamento de Conteúdo
+### RF08 - Versionar conteúdo
 Manter um histórico de versões do conteúdo (quem alterou, o que foi alterado e quando), com interface para visualização e reversão de versões.
 
 ### RF09 - Favoritar repositórios

@@ -26,7 +26,7 @@ Nota-se que os objetivos específicos foram previamente listados na página "Sol
 | OE2                 | US05 | Publicar Materiais de Aula    | **Must Have**   | ✅   |
 | OE2                 | US06 | Editar Materiais de Aula      | **Must Have**   | ✅   |
 | OE2                 | US07 | Deletar Materiais de Aula     | **Must Have**   | ✅   |
-| OE2                 | US08 | Versionamento de Conteúdo     | **Should Have** |     |
+| OE2                 | US08 | Versionar Conteúdo            | **Should Have** |     |
 | OE1                 | US09 | Favoritar Repositórios        | **Should Have** |     |
 | OE3                 | US10 | Publicar Avisos               | **Could Have**  |     |
 | OE3                 | US11 | Editar Avisos                 | **Could Have**  |     |
