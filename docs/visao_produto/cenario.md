@@ -16,7 +16,9 @@ O Professor Doutor Maurício Serrano, docente da Universidade de Brasília, atua
 
 A necessidade desse projeto advém de dois caminhos. Recentemente, o professor perdeu acesso à sua página da disciplina na plataforma Moodle. Tendo que começar do zero, com receio da repetição desse evento e já tendo alguns problemas de comunicação com os alunos — confusão de e-mails recebidos, falta de participação no grupo do Telegram, incerteza sobre a disponibilização dos slides, dentre outros — nosso cliente busca a simplificação da comunicação e do compartilhamento de materiais e informações para a disciplina de Estrutura de Dados 2, a qual ele ministra. Vale notar que, por ministrar também a matéria de Projetos de Algoritmos, a qual utiliza de fundamentos de Estrutura de Dados 2, esse projeto pode auxiliar no saneamento de dúvidas básicas desses alunos. 
 
-Ademais, o professor vê a oportunidade de incluir funcionalidades, que não havia nas antigas formas de comunicação, que podem auxiliar na aprendizagem de seus alunos. Notavelmente, ficou interessado na apresentação de cada tipo de algoritmo trabalhado na matéria, em como são aplicados e produzidos em diferentes linguagens, a fim de estimular o aprendizado e enriquecer os projetos práticos dos alunos.  
+Ademais, o professor vê a oportunidade de incluir funcionalidades, que não havia nas antigas formas de comunicação, que podem auxiliar na aprendizagem de seus alunos. Notavelmente, ficou interessado na apresentação de cada tipo de algoritmo trabalhado na matéria, em como são aplicados e produzidos em diferentes linguagens, a fim de estimular o aprendizado e enriquecer os projetos práticos dos alunos.
+
+![Diagrama de Ishikawa](../assets/images/ishikawa.png)
 
 ## Desafios do Projeto
 
