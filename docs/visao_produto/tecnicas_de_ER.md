@@ -107,3 +107,22 @@
 ### Organização e Atualização: 
 
 - Feedback do cliente: Coleta de feedback após entregas parciais ou completas, visando implementar melhorias contínuas.
+
+---
+
+| **Fases do RAD** | **Atividades da Engenharia de Requisitos (ER)** | **Prática** | **Técnica** | **Resultados Esperados** |
+|------------------|--------------------------------------------------|--------------|--------------|----------------------------|
+| **Requisitos** | Elicitação e Descoberta | Levantamento de Requisitos | Entrevistas com o cliente, Análise de concorrentes, Brainstorming | Problema compreendido, alternativas de solução levantadas e requisitos iniciais identificados |
+|  | Análise e Consenso | Priorização de Requisitos | Product Backlog Building, Priorização MoSCoW, Matriz de Valor e Complexidade | Escopo e funcionalidades prioritárias acordadas entre equipe e cliente |
+|  | Declaração | Registro e Especificação de Requisitos | Lista de Requisitos Funcionais e Não Funcionais, Histórias de Usuário e Cenários, Documento de Visão de Produto | Requisitos detalhados, claros e documentados |
+|  | Representação | Modelagem dos Requisitos | User Flow | Fluxo de navegação e interação do usuário representado visualmente |
+|  | Verificação e Validação | Verificação e Validação de Requisitos | Checklist de Verificação e Validação, Feedback do cliente e da equipe | Requisitos verificados quanto à completude, viabilidade e clareza |
+|  | Organização e Atualização | Refinamento Contínuo dos Requisitos | Product Backlog Building, User Story, Priorização MoSCoW e Matriz de Valor e Complexidade | Backlog atualizado de acordo com feedbacks e mudanças de prioridade |
+| **Prototipagem** | Elicitação e Descoberta | Planejamento de Interfaces | Brainstorming | Ideias de interface e fluxo de navegação definidas |
+|  | Representação | Desenvolvimento de Protótipos | Prototipagem | Protótipo navegável criado para validação |
+|  | Verificação e Validação | Validação de Protótipos | Feedback do cliente, Checklist de Verificação e Validação | Protótipo avaliado e aprovado com base em critérios de usabilidade e requisitos |
+|  | Organização e Atualização | Revisão Contínua | Product Backlog Building | Protótipos e backlog atualizados conforme feedback do cliente |
+| **Construção e Teste** | Análise e Consenso | Validação Técnica | Product Backlog Building e Prototipagem | Funcionalidades planejadas para desenvolvimento e soluções e fluxos validados antes da implementação |
+|  | Declaração | Documentação Técnica | User Story | Documentação técnica pronta para orientar o desenvolvimento |
+|  | Verificação e Validação | Testes e Critérios de Conclusão | Definition of Ready (DoR), Definition of Done (DoD), Testes de Usabilidade | Funcionalidades implementadas, testadas e validadas quanto à qualidade e usabilidade |
+|  | Organização e Atualização | Feedback e Melhoria Contínua | Feedback do cliente e da equipe | Melhorias contínuas aplicadas com base em testes e validações |
