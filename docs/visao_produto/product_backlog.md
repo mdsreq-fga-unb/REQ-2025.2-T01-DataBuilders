@@ -33,3 +33,18 @@ Nota-se que os objetivos específicos foram previamente listados na página "Sol
 | OE3                 | US12 | Deletar Avisos                | **Could Have**  |     |
 | —                   | —    | (nenhuma descartada ainda)    | **Won’t Have**  |     |
 
+---
+
+### Complexidade
+
+Para auxiliar na construção da tabela MoSCoW, foi estabelecido uma matriz de complexidade no [**Figma**](https://www.figma.com/board/Kw9DsJ4TlWcCwdi1I62q7I/Sem-t%C3%ADtulo?node-id=0-1&t=RC2qap7qIVX463fv-1), aonde a equipe debateu sobre o conhecimento dos membros acerca das tecnlogias utilizadas e das funcionalidades a serem implementadas.
+
+---
+
+#### Acesse a Matriz de Complexidade
+
+**[Clique aqui para visualizar a matriz no Figma](https://www.figma.com/board/Kw9DsJ4TlWcCwdi1I62q7I/Sem-t%C3%ADtulo?node-id=0-1&t=RC2qap7qIVX463fv-1)**  
+
+---
+
+![Matriz de Complexidade](../assets/images/matriz_complexidade.png)
