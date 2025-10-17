@@ -3,8 +3,8 @@
 De acordo com o backlog levantado e o processo de desenvolvimento definido, o cronograma a seguir apresenta a proposta de organização das atividades, entregas e validações ao longo das semanas de execução do projeto. O objetivo é garantir uma evolução contínua, com entregas incrementais e feedback constante do cliente para assegurar a qualidade e o alinhamento com as expectativas.
 
 
-| **Cronograma** | **Semana** | **Início** | **Fim** | **Objetivo Principal** | **Entregas Esperadas** | **Validação do Cliente** |
-|-------------|---------|--------|-----|--------------------|--------------------|----------------------|
+| **Semana** | **Início** | **Fim** | **Objetivo Principal** | **Entregas Esperadas** | **Validação do Cliente** |
+|---------|--------|-----|--------------------|--------------------|----------------------|
 | Semana 1 | 29/09 | 06/10 | Levantamento dos requisitos e backlog geral | - Backlog completo com as user stories descritas, priorizadas e alinhadas com os objetivos específicos. | Cliente revisa o backlog e confirma se todos os requisitos representam suas necessidades. |
 | Semana 2 | 06/10 | 13/10 | Planejamento do backlog da primeira entrega | - Seleção das US (autenticação, busca de repositórios e consulta/publicação de materiais.).<br>- Definição do escopo e protótipo inicial a ser criado. | Aprovação do escopo do primeiro ciclo e confirmação de prioridades. |
 | Semana 3 | 13/10 | 20/10 | Prototipagem da primeira entrega | - Protótipo navegável de autenticação, busca de repositórios e consulta/publicação de materiais. | Cliente testa o protótipo e fornece feedback de usabilidade e fluxo. |
