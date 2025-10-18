@@ -3,7 +3,7 @@
 ## Objetivos do Produto
 
 ### Objetivo geral
-Apresentar ao professor uma ferramenta que seja acessível aos alunos e acomode todo o material didático necessário à disciplina, assim garantindo a melhoria e unificação das diversas plataformas de comunicação que atualmente usa.  
+Propor, avaliar e validar uma solução integrada e acessível para centralizar o material didático e os canais de comunicação da disciplina, de modo a garantir a autonomia do professor sobre sua página, simplificar e acelerar a disponibilização de conteúdo aos alunos e assegurar a integridade e adequação do material ao método pedagógico adotado.
 
 ### Objetivos específicos e indicadores
 
