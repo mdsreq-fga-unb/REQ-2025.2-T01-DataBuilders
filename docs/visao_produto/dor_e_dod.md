@@ -1,3 +1,5 @@
+# Definition of Ready (DoR) e Definition of Done (DoD)
+
 ## Definition of Ready (DoR)
 
 A **Definition of Ready (DoR)** estabelece os critérios mínimos necessários para que um requisito seja considerado pronto para entrar em desenvolvimento.  
