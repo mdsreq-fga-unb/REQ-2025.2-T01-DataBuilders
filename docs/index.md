@@ -14,6 +14,7 @@ O objetivo principal é oferecer ao professor uma ferramenta que seja intuitiva,
 - [Interação da Equipe e Cliente](visao_produto/interacao.md)
 - [Requisitos](visao_produto/requisitos.md)
 - [User Stories](visao_produto/user_stories.md)
+- [DoD e DoD](visao_produto/dor_e_dod.md)
 - [Lições aprendidas](visao_produto/licoes.md)
 - [Referências](visao_produto/referencias.md)
 
