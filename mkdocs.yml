@@ -18,8 +18,8 @@ theme:
         icon: material/weather-sunny
         name: "Voltar para modo claro"
   font:
-    text: Roboto
-    code: Roboto Mono
+    text:  Google Sans Code
+    code:  Google Sans Code
   features:
     - navigation.tabs
     - navigation.top
@@ -31,7 +31,7 @@ theme:
     - navigation.index
     - navigation.tracking
   toc:
-    depth: 2
+    depth: 3
     permalink: true
     title: "Índice"
     start_level: 1
@@ -56,10 +56,17 @@ nav:
     - Product Backlog: visao_produto/product_backlog.md
     - Protótipo: visao_produto/prototipo.md
     - Referências Bibliográficas: visao_produto/referencias.md
+
   - Entregas: 
     - Unidade 1: entregas/unidade1.md
 
 markdown_extensions:
+
+  - attr_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+
   - admonition
   - codehilite
   - footnotes
