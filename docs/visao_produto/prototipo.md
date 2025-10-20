@@ -55,19 +55,51 @@ O protótipo é uma etapa fundamental do desenvolvimento, pois:
 
 ## 📸 Prévia Visual
 
-### Tela de Login
+### 👤 Login (Professor e Monitores)
+Tela restrita para autenticação de usuários responsáveis pela gestão dos conteúdos.
+
 ![Tela inicial do protótipo](../assets/images/login.png)
-### Tela da Home Page
+
+---
+
+### 🏠 Página Inicial 
+Apresenta o nome do projeto e seu propósito. Centraliza o acesso rápido às principais seções do site, como materiais, repositórios e comunicados, com uma interface simples e responsiva.
+
 ![Tela inicial do protótipo](../assets/images/home.png)
-### Tela de Materiais
+
+---
+
+### 📚 Materiais de Aula
+Exibe os conteúdos da disciplina, como slides, vídeos e documentos. Organizada para facilitar o acesso dos alunos, com seções filtráveis e visual limpo.
+
 ![Tela inicial do protótipo](../assets/images/materials.png)
-### Tela de Avisos
+
+---
+
+### 📢 Avisos e Comunicados
+Central de notificações onde o professor e os monitores publicam atualizações e informações importantes para os alunos.
+
 ![Tela inicial do protótipo](../assets/images/avisos.png)
-### Tela de Repositórios
+
+---
+
+### 💻 Repositórios GitHub
+Mostra os projetos relacionados à disciplina, com integração à API do GitHub. Inclui filtros por linguagem, número de estrelas e busca por nome ou descrição.
+
 ![Tela inicial do protótipo](../assets/images/repositorios.png)
-### Tela de Perfil
+
+---
+
+### 👤 Tela de Perfil
+Mostra o painel pessoal do docente com informações de contato, estatísticas rápidas (Materiais Criados, Alunos Ativos, Avisos Publicados, Repositórios) e áreas de gestão.
+
 ![Tela inicial do protótipo](../assets/images/profile.png)
-### Tela de Dashboard Administrativo
+
+---
+
+### ⚙️ Dashboard Administrativo 
+Painel interno onde o professor e monitores gerenciam os materiais de aula, os avisos e o histórico de versões do conteúdo publicado.
+
 ![Tela inicial do protótipo](../assets/images/dashboard.png)
 
 ---
