@@ -17,21 +17,21 @@ Nota-se que os objetivos específicos foram previamente listados na página "Sol
 - **OE2**: Postagem e fornecimento de materiais de aula
 - **OE3**: Integridade do material e apresentação de códigos exemplares
 
-| Objetivo Específico | ID   | Descrição                     | Prioridade      | MVP |
-| ------------------- | ---- | ----------------------------- | --------------- | --- |
-| OE3                 | US01 | Buscar Repositórios do GitHub | **Must Have**   | ✅   |
-| OE2                 | US02 | Consultar Materiais de Aula   | **Must Have**   | ✅   |
-| OE1                 | US03 | Autenticar Usuários           | **Must Have**   | ✅   |
-| OE1                 | US04 | Gerenciar Contas de Usuários  | **Should Have** | ✅   |
-| OE2                 | US05 | Publicar Materiais de Aula    | **Must Have**   | ✅   |
-| OE2                 | US06 | Editar Materiais de Aula      | **Must Have**   | ✅   |
-| OE2                 | US07 | Deletar Materiais de Aula     | **Must Have**   | ✅   |
-| OE2                 | US08 | Versionar Conteúdo            | **Should Have** |     |
-| OE1                 | US09 | Favoritar Repositórios        | **Should Have** |     |
-| OE3                 | US10 | Publicar Avisos               | **Could Have**  |     |
-| OE3                 | US11 | Editar Avisos                 | **Could Have**  |     |
-| OE3                 | US12 | Deletar Avisos                | **Could Have**  |     |
-| —                   | —    | (nenhuma descartada ainda)    | **Won’t Have**  |     |
+| Objetivo Específico | ID   |  RF   | Descrição                     | Prioridade      | MVP |
+| ------------------- | ---- |  ---- | ----------------------------- | --------------- | --- |
+| OE3                 | US01 |  RF01 | Buscar Repositórios do GitHub | **Must Have**   | ✅   |
+| OE2                 | US02 |  RF02 | Consultar Materiais de Aula   | **Must Have**   | ✅   |
+| OE1                 | US03 |  RF03 | Autenticar Usuários           | **Must Have**   | ✅   |
+| OE1                 | US04 |  RF04 | Gerenciar Contas de Usuários  | **Should Have** | ✅   |
+| OE2                 | US05 |  RF05 | Publicar Materiais de Aula    | **Must Have**   | ✅   |
+| OE2                 | US06 |  RF06 | Editar Materiais de Aula      | **Must Have**   | ✅   |
+| OE2                 | US07 |  RF07 | Deletar Materiais de Aula     | **Must Have**   | ✅   |
+| OE2                 | US08 |  RF08 | Versionar Conteúdo            | **Should Have** |     |
+| OE1                 | US09 |  RF09 | Favoritar Repositórios        | **Should Have** |     |
+| OE3                 | US10 |  RF10 | Publicar Avisos               | **Could Have**  |     |
+| OE3                 | US11 |  RF11 | Editar Avisos                 | **Could Have**  |     |
+| OE3                 | US12 |  RF12 | Deletar Avisos                | **Could Have**  |     |
+| —                   | —    |  —    | (nenhuma descartada ainda)    | **Won’t Have**  |     |
 
 ---
 
