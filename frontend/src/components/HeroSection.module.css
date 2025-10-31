@@ -1,0 +1,113 @@
+.heroSection {
+    background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+    min-height: 400px;
+    display: flex;
+    align-items: center;
+    padding: 3rem 0;
+}
+
+.container {
+    padding-left: 120px;
+    padding-right: 120px;
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.contentLeft {
+    color: white;
+    flex: 0 0 58.33333333%;
+    max-width: 58.33333333%;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.description {
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: white;
+}
+
+.ctaButton {
+    font-weight: 600;
+    font-size: 1.1rem;
+    padding: 0.75rem 3rem;
+    background-color: white;
+    color: #212529;
+    border: none;
+    border-radius: 50rem;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.ctaButton:hover {
+    background-color: #f8f9fa;
+}
+
+.contentRight {
+    flex: 0 0 41.66666667%;
+    max-width: 41.66666667%;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 1.5rem;
+    border-radius: 1rem;
+}
+
+.cardContent {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 2rem;
+}
+
+.cardTitle {
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.cardDescription {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: white;
+    margin-bottom: 0;
+}
+
+@media (max-width: 991px) {
+    .row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .contentLeft {
+        flex: 0 0 100%;
+        max-width: 100%;
+        margin-bottom: 1.5rem;
+    }
+
+    .contentRight {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
