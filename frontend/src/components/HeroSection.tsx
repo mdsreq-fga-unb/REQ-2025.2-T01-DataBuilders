@@ -11,9 +11,9 @@ interface HeroSectionProps {
 function HeroSection({ courseTitle, description, ctaText, ctaLink }: HeroSectionProps) {
   return (
     <section className={styles.heroSection}>
-      <div className={styles.container}>
-        <div className={styles.row}>
-          <div className={styles.contentLeft}>
+      <div className="container">
+        <div className="row align-items-center">
+          <div className="col-lg-7">
             <h1 className={styles.title}>
               {courseTitle}
             </h1>
@@ -25,7 +25,7 @@ function HeroSection({ courseTitle, description, ctaText, ctaLink }: HeroSection
             </Link>
           </div>
 
-          <div className={styles.contentRight}>
+          <div className="col-lg-5">
             <div className={styles.card}>
               <div className={styles.cardContent}>
                 <div className={styles.iconContainer}>

@@ -1,5 +1,6 @@
 import type { ReactNode } from 'react';
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 import styles from './DefaultLayout.module.css';
 
 interface DefaultLayoutProps {
@@ -13,6 +14,7 @@ function DefaultLayout({ children }: DefaultLayoutProps) {
       <main className={styles.main}>
         {children}
       </main>
+      <Footer />
     </div>
   );
 }

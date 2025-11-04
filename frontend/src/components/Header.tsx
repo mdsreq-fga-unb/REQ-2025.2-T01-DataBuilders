@@ -6,7 +6,7 @@ function Header() {
   return (
     <>
       <header className={styles.header}>
-        <div className={`${styles.container} ${styles.headerContainer}`}>
+        <div className={`container ${styles.headerContainer}`}>
           <div className={styles.headerContent}>
             <Logo />
             <nav className={styles.nav}>
@@ -31,7 +31,7 @@ function Header() {
       </header>
 
       <div className={styles.breadcrumb}>
-        <div className={`${styles.container} ${styles.breadcrumbContainer}`}>
+        <div className={`container ${styles.breadcrumbContainer}`}>
           <div className={styles.breadcrumbContent}>
             <svg 
               width="16" 
