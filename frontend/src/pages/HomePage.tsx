@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import DefaultLayout from '../layouts/DefaultLayout';
-import HeroSection from '../components/HeroSection';
-import HighlightCard from '../components/HighlightCard';
-import SectionHeader from '../components/SectionHeader';
-import FilterGroup from '../components/FilterGroup';
-import RepositoryCard from '../components/RepositoryCard';
-import NoticeCard from '../components/NoticeCard';
+import {
+  HeroSection,
+  HighlightCard,
+  SectionHeader,
+  FilterGroup,
+  RepositoryCard,
+  NoticeCard
+} from '../components';
 import styles from './HomePage.module.css';
 
 function HomePage() {
