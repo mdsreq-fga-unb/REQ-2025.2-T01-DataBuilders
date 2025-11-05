@@ -7,7 +7,8 @@ import {
   SectionHeader,
   FilterGroup,
   RepositoryCard,
-  NoticeCard
+  NoticeCard,
+  Breadcrumb
 } from '../components';
 import styles from './HomePage.module.css';
 
@@ -67,6 +68,8 @@ function HomePage() {
 
   return (
     <DefaultLayout>
+      <Breadcrumb items={[{ label: 'Home' }]} />
+      
       <HeroSection
         courseTitle="Estruturas de Dados 2"
         description="Explore algoritmos avançados, estruturas de dados complexas e desenvolva soluções eficientes com o Professor Maurício Serrano na UnB."

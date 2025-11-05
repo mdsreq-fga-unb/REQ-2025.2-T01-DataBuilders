@@ -1,0 +1,43 @@
+.breadcrumb {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #dee2e6;
+  box-shadow: inset 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.breadcrumbContainer {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.breadcrumbContent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.breadcrumbItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.separator {
+  color: #6c757d;
+  margin: 0 0.25rem;
+}
+
+.breadcrumbLink {
+  color: #084298;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbLink:hover {
+  color: #063970;
+  text-decoration: underline;
+}
+
+.breadcrumbText {
+  color: #1a1a1a;
+}
+
