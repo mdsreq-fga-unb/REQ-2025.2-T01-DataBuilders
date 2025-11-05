@@ -1,16 +1,19 @@
 import styles from './FilterDropdown.module.css';
 
 interface FilterDropdownProps {
-  label: string;
+  label?: string;
   value: string;
   options: { value: string; label: string }[];
   onChange: (value: string) => void;
+  hideLabel?: boolean;
 }
 
-function FilterDropdown({ label, value, options, onChange }: FilterDropdownProps) {
+function FilterDropdown({ label, value, options, onChange, hideLabel = false }: FilterDropdownProps) {
   return (
     <div className={styles.filterContainer}>
-      <label className={styles.filterLabel}>{label}</label>
+      {!hideLabel && label && (
+        <label className={styles.filterLabel}>{label}</label>
+      )}
       <select
         className={styles.filterSelect}
         value={value}
