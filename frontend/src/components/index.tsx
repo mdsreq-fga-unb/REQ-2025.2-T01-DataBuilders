@@ -14,3 +14,6 @@ export { RepositorySearchBar, FilterCheckbox, LanguageIndicator, RepositoriesPag
 export { NoticePriorityBadge, NoticePriorityTag, NoticesPageCard } from './notices';
 export type { PriorityType, PriorityLevel } from './notices';
 
+// Re-export profile components
+export * from './profile';
+
