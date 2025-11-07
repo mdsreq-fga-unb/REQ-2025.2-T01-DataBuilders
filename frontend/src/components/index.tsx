@@ -17,3 +17,6 @@ export type { PriorityType, PriorityLevel } from './notices';
 // Re-export profile components
 export * from './profile';
 
+// Re-export dashboard components
+export * from './dashboard';
+

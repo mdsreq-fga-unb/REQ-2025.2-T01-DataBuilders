@@ -1,0 +1,105 @@
+.card {
+  position: relative;
+  border-radius: 1rem;
+  background: linear-gradient(90deg, #edf2f7 0%, #ffffff 70%);
+  box-shadow: 0 16px 28px rgba(15, 23, 42, 0.08);
+  padding: 1.5rem;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 16% auto 16% 0;
+  width: 8px;
+  border-radius: 999px;
+  background: #1e3a8a;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.textContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #475569;
+}
+
+.value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1.1;
+}
+
+.changeIndicator {
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.changeIndicator.positive {
+  color: #16a34a;
+}
+
+.changeIndicator.negative {
+  color: #dc2626;
+}
+
+.detail {
+  font-size: 0.8125rem;
+  color: #2563eb;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-top: 0.125rem;
+}
+
+.detailIcon {
+  display: inline-flex;
+  align-items: center;
+}
+
+.detailIcon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.iconWrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 1.1rem;
+  background-color: var(--icon-bg);
+  color: var(--icon-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.iconWrapper svg {
+  width: 30px;
+  height: 30px;
+}
+
+@media (max-width: 767px) {
+  .card {
+    padding: 1.25rem;
+  }
+
+  .value {
+    font-size: 1.75rem;
+  }
+}
+
+
