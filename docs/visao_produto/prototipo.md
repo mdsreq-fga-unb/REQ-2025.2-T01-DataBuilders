@@ -1,6 +1,6 @@
 # 🎨 Protótipo do Projeto **Data Builders**
 
-O protótipo foi desenvolvido no [**Canva**](https://www.canva.com/design/DAG09_P-IgA/5gKIEwjxnJBV4FIgW9DFOA/edit?utm_content=DAG09_P-IgA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) e representa a estrutura inicial do site proposto para a disciplina **Estruturas de Dados 2**, ministrada pelo **Professor Doutor Maurício Serrano** na **Universidade de Brasília**.
+O protótipo foi desenvolvido no [**Figma**](https://www.figma.com/design/XQeLhG5b5SwWEsuR1m3aWy/Prot%C3%B3tipo-figma?node-id=0-1&t=T3ItLIwkHLbbW76W-1) e representa a estrutura inicial do site proposto para a disciplina **Estruturas de Dados 2**, ministrada pelo **Professor Doutor Maurício Serrano** na **Universidade de Brasília**.
 
 ---
 
@@ -13,7 +13,7 @@ Ele serve como base para validar ideias, coletar feedback e garantir que o produ
 
 ## 🔗 Acesse o Protótipo
 
-👉 **[Clique aqui para visualizar o protótipo completo no Canva](https://www.canva.com/design/DAG09_P-IgA/5gKIEwjxnJBV4FIgW9DFOA/edit?utm_content=DAG09_P-IgA&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton)**  
+👉 **[Clique aqui para visualizar o protótipo completo no Figma](https://www.figma.com/design/XQeLhG5b5SwWEsuR1m3aWy/Prot%C3%B3tipo-figma?node-id=0-1&t=T3ItLIwkHLbbW76W-1)**  
 
 ---
 
