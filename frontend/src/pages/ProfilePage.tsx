@@ -1,5 +1,5 @@
 import { DefaultLayout } from '../layouts';
-import { Breadcrumb, ProfileHeader, StatCard, UserInfoForm, QuickSettings, ContentManagementCard, ChangePasswordCard } from '../components';
+import { Breadcrumb, ProfileHeader, StatCard, UserInfoForm, ContentManagementCard, ChangePasswordCard } from '../components';
 import styles from './ProfilePage.module.css';
 
 interface Statistic {
@@ -75,28 +75,6 @@ function ProfilePage() {
     }
   ];
 
-  // Configurações rápidas
-  const quickSettings = [
-    {
-      id: 'email-notifications',
-      label: 'Notificações por Email',
-      description: 'Receber notificações por email',
-      enabled: true
-    },
-    {
-      id: 'push-notifications',
-      label: 'Notificações Push',
-      description: 'Receber notificações no navegador',
-      enabled: false
-    },
-    {
-      id: 'public-profile',
-      label: 'Perfil Público',
-      description: 'Tornar perfil visível para alunos',
-      enabled: true
-    }
-  ];
-
   return (
     <DefaultLayout>
       <Breadcrumb items={[{ label: 'Home', path: '/' }, { label: 'Perfil' }]} />
@@ -141,7 +119,6 @@ function ProfilePage() {
                   userType="Professor"
                   department="Ciência da Computação"
                 />
-                <QuickSettings settings={quickSettings} />
                 <ChangePasswordCard />
               </div>
 
