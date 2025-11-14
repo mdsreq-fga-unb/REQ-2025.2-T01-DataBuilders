@@ -6,8 +6,9 @@ Aplicação React responsável pelas interfaces do sistema de gestão acadêmica
 
 ## 🔧 Pré-requisitos
 
-- [Node.js](https://nodejs.org/) **>= 18** (recomendado: LTS mais recente)
-- [npm](https://www.npmjs.com/) **>= 9** (instalado com o Node)
+- [Node.js](https://nodejs.org/) **>= 20** (recomendado: LTS)
+- [npm](https://www.npmjs.com/) **>= 10** (vem junto com o Node)
+- [NVM](https://github.com/nvm-sh/nvm) para gerenciar versões do Node (opcional, mas recomendado)
 
 Verifique as versões instaladas:
 
@@ -21,10 +22,23 @@ npm --version
 ## 🚀 Como executar localmente
 
 ```bash
-# 1. Instale as dependências
+# 1. Instalar NVM (se necessário)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash && source ~/.bashrc
+
+# 2. Entrar na pasta do frontend
+cd /caminho/do/projeto/frontend
+
+# 3. Instalar e usar a versão de Node definida no .nvmrc
+nvm install
+nvm use
+
+# 4. Limpar dependências antigas (opcional, recomendado)
+rm -rf node_modules package-lock.json
+
+# 5. Instalar todas as dependências
 npm install
 
-# 2. Inicie o servidor de desenvolvimento
+# 6. Rodar o projeto em modo desenvolvimento
 npm run dev
 ```
 
