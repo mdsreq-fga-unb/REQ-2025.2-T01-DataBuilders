@@ -10,7 +10,7 @@ export async function register(req: Request, res: Response) {
   try {
     const { name, email, password, role } = req.body;
     
-    // Validações básicas
+
     if (!name || !email || !password) {
       return res.status(400).json({ 
         message: 'Name, email and password are required' 
@@ -27,7 +27,7 @@ export async function register(req: Request, res: Response) {
   } catch (error) {
     console.error('Register error:', error);
     
-    // Erro de email duplicado do Prisma
+
     if (error instanceof Error && error.message.includes('Unique constraint')) {
       return res.status(409).json({ message: 'Email already registered' });
     }
