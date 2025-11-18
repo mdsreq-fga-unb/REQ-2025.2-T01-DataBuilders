@@ -10,10 +10,10 @@ export async function registerUser(
   password: string, 
   role: 'MONITOR' | 'PROFESSOR' | 'ADMIN' = 'MONITOR'
 ) {
-  // Hash da senha
+  
   const hashed = await bcrypt.hash(password, 10);
   
-  // Criar usuário
+
   return prisma.user.create({ 
     data: { 
       name, 
@@ -25,26 +25,26 @@ export async function registerUser(
 }
 
 export async function authenticate(email: string, password: string) {
-  // Buscar usuário
+ 
   const user = await prisma.user.findUnique({ where: { email } });
   
   if (!user) {
     return null;
   }
 
-  // Verificar se usuário tem senha (pode ser usuário do GitHub sem senha)
+  
   if (!user.password) {
-    return null; // Usuário deve usar login do GitHub
+    return null; 
   }
 
-  // Verificar senha
+
   const isPasswordValid = await bcrypt.compare(password, user.password);
   
   if (!isPasswordValid) {
     return null;
   }
 
-  // Gerar token JWT
+
   const token = jwt.sign(
     { 
       sub: user.id, 
