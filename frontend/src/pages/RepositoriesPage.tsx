@@ -3,24 +3,11 @@ import DefaultLayout from '../layouts/DefaultLayout';
 import { Breadcrumb } from '../components';
 import { FilterDropdown } from '../components/materials';
 import { RepositorySearchBar, FilterCheckbox, RepositoryCard } from '../components/repositories';
+import { useRepositories } from '../context/RepositoriesContext';
 import styles from './RepositoriesPage.module.css';
 
-interface Repository {
-  title: string;
-  description: string;
-  language: string;
-  updatedDate: string;
-  dateValue: Date;
-  stars: number;
-  readmeStatus: 'ativo' | 'ativo-sem-label' | 'sem-readme';
-  isFavorite: boolean;
-  githubUrl: string;
-  detailsUrl?: string;
-  topic?: string;
-  hasRecentCommits?: boolean;
-}
-
 function RepositoriesPage() {
+  const { repositories } = useRepositories();
   const [searchQuery, setSearchQuery] = useState('');
   const [language, setLanguage] = useState('todas');
   const [minStars, setMinStars] = useState('qualquer');
@@ -71,86 +58,22 @@ function RepositoriesPage() {
     { value: 'a-z', label: 'A-Z' }
   ];
 
-  const allRepositories: Repository[] = [
-    {
-      title: 'avl-tree-implementation',
-      description: 'Implementação completa de árvore AVL em Python com visualização gráfica e testes unitários abrangentes.',
-      language: 'Python',
-      updatedDate: '10/12/2024',
-      dateValue: new Date('2024-12-10'),
-      stars: 156,
-      readmeStatus: 'ativo',
-      isFavorite: false,
-      githubUrl: '#',
-      topic: 'arvores',
-      hasRecentCommits: true
-    },
-    {
-      title: 'hash-table-cpp',
-      description: 'Implementação eficiente de tabela hash em C++ com diferentes métodos de resolução de colisões e análise de performance.',
-      language: 'C++',
-      updatedDate: '05/12/2024',
-      dateValue: new Date('2024-12-05'),
-      stars: 203,
-      readmeStatus: 'ativo-sem-label',
-      isFavorite: false,
-      githubUrl: '#',
-      topic: 'hash',
-      hasRecentCommits: true
-    },
-    {
-      title: 'sorting-algorithms-visualizer',
-      description: 'Visualizador interativo de algoritmos de ordenação com análise de complexidade e comparação de performance.',
-      language: 'Python',
-      updatedDate: '03/12/2024',
-      dateValue: new Date('2024-12-03'),
-      stars: 134,
-      readmeStatus: 'ativo',
-      isFavorite: true,
-      githubUrl: '#',
-      topic: 'ordenacao',
-      hasRecentCommits: false
-    },
-    {
-      title: 'dijkstra-algorithm-java',
-      description: 'Implementação otimizada do algoritmo de Dijkstra em Java com interface gráfica para visualização de grafos.',
-      language: 'Java',
-      updatedDate: '08/12/2024',
-      dateValue: new Date('2024-12-08'),
-      stars: 89,
-      readmeStatus: 'ativo',
-      isFavorite: true,
-      githubUrl: '#',
-      topic: 'grafos',
-      hasRecentCommits: true
-    },
-    {
-      title: 'binary-tree-visualizer',
-      description: 'Ferramenta web interativa para visualização de árvores binárias com suporte a diferentes tipos de travessia.',
-      language: 'JavaScript',
-      updatedDate: '28/11/2024',
-      dateValue: new Date('2024-11-28'),
-      stars: 67,
-      readmeStatus: 'ativo-sem-label',
-      isFavorite: false,
-      githubUrl: '#',
-      topic: 'arvores',
-      hasRecentCommits: false
-    },
-    {
-      title: 'graph-algorithms-c',
-      description: 'Coleção de algoritmos de grafos implementados em C, incluindo DFS, BFS, Kruskal e Prim.',
-      language: 'C',
-      updatedDate: '25/11/2024',
-      dateValue: new Date('2024-11-25'),
-      stars: 45,
-      readmeStatus: 'sem-readme',
-      isFavorite: false,
-      githubUrl: '#',
-      topic: 'grafos',
-      hasRecentCommits: false
-    }
-  ];
+  // Converter repositórios do contexto para o formato esperado pela página
+  const allRepositories = repositories
+    .filter(repo => repo.isActive)
+    .map(repo => ({
+      title: repo.name,
+      description: repo.description,
+      language: repo.language,
+      updatedDate: repo.updatedDate || new Date().toLocaleDateString('pt-BR'),
+      dateValue: repo.dateValue || new Date(),
+      stars: repo.stars,
+      readmeStatus: repo.readmeStatus || 'ativo',
+      isFavorite: repo.isFavorite || false,
+      githubUrl: repo.url,
+      topic: repo.topic,
+      hasRecentCommits: repo.hasRecentCommits
+    }));
 
   const handleToggleFavorite = (index: number) => {
     // TODO: Implementar lógica de favoritos

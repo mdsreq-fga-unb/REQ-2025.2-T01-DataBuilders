@@ -36,6 +36,7 @@
   cursor: pointer;
   transition: all 0.2s;
   border: none;
+  text-decoration: none;
 }
 
 .quickActionsButton {

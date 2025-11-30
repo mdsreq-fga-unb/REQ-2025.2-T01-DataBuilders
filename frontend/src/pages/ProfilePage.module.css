@@ -18,11 +18,39 @@
   box-shadow: 0 24px 48px rgba(15, 23, 42, 0.08);
 }
 
+.contentManagementHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.75rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 .contentManagementTitle {
   font-size: 1.25rem;
   font-weight: 700;
   color: #0f172a;
-  margin-bottom: 1.75rem;
+  margin: 0;
+}
+
+.dashboardButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.25rem;
+  background-color: #084298;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.dashboardButton:hover {
+  background-color: #063970;
 }
 
 .contentManagementGrid {

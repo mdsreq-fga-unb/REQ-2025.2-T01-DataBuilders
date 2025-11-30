@@ -2,10 +2,11 @@ import { useState, useMemo } from 'react';
 import DefaultLayout from '../layouts/DefaultLayout';
 import { Breadcrumb } from '../components';
 import { SearchBar, FilterDropdown, MaterialCard } from '../components/materials';
-import type { MaterialType } from '../components/materials';
+import { useMaterials } from '../context/MaterialsContext';
 import styles from './MaterialsPage.module.css';
 
 function MaterialsPage() {
+  const { materials } = useMaterials();
   const [searchQuery, setSearchQuery] = useState('');
   const [materialType, setMaterialType] = useState('todos');
   const [topic, setTopic] = useState('todos');
@@ -42,104 +43,25 @@ function MaterialsPage() {
     { value: 'a-z', label: 'A-Z' }
   ];
 
-  const allMaterials = [
-    {
-      type: 'slides' as MaterialType,
-      title: 'Árvores AVL - Conceitos e Implementação',
-      description: 'Slides completos sobre árvores AVL, incluindo operações de inserção, remoção e balanceamento automático.',
-      professor: 'Prof. Mauricio Serrano',
-      date: '10/12/2024',
-      dateValue: new Date('2024-12-10'),
-      downloads: 156,
-      version: 'v2.1',
-      isFavorite: false,
-      additionalInfo: undefined,
-      actionButtonText: 'Visualizar',
-      actionButtonLink: '#',
-      topic: 'arvores',
-      period: '2024-2'
-    },
-    {
-      type: 'video' as MaterialType,
-      title: 'Algoritmo de Dijkstra - Aula Prática',
-      description: 'Videoaula demonstrando a implementação e execução do algoritmo de Dijkstra para encontrar caminhos mínimos.',
-      professor: 'Prof. Maurício Serrano',
-      date: '08/12/2024',
-      dateValue: new Date('2024-12-08'),
-      downloads: 89,
-      version: 'v1.0',
-      isFavorite: true,
-      additionalInfo: '45min',
-      actionButtonText: 'Assistir',
-      actionButtonLink: '#',
-      topic: 'grafos',
-      period: '2024-2'
-    },
-    {
-      type: 'pdf' as MaterialType,
-      title: 'Tabelas Hash - Teoria e Aplicações',
-      description: 'Apostila completa sobre estruturas de hash, funções de dispersão e métodos de resolução de colisões.',
-      professor: 'Prof. Mauricio Serrano',
-      date: '05/12/2024',
-      dateValue: new Date('2024-12-05'),
-      downloads: 203,
-      version: 'v1.2',
-      isFavorite: false,
-      additionalInfo: '24 páginas',
-      actionButtonText: 'Visualizar',
-      actionButtonLink: '#',
-      topic: 'hash',
-      period: '2024-2'
-    },
-    {
-      type: 'codigo' as MaterialType,
-      title: 'Implementações de QuickSort',
-      description: 'Código fonte completo do QuickSort em Python, Java e C++ com análise de complexidade e otimizações.',
-      professor: 'Prof. Maurício Serrano',
-      date: '03/12/2024',
-      dateValue: new Date('2024-12-03'),
-      downloads: 134,
-      version: 'v1.1',
-      isFavorite: true,
-      additionalInfo: '3 linguagens',
-      actionButtonText: 'Ver Código',
-      actionButtonLink: '#',
-      topic: 'ordenacao',
-      period: '2024-2'
-    },
-    {
-      type: 'slides' as MaterialType,
-      title: 'Heap Binário e Fila de Prioridade',
-      description: 'Apresentação sobre estruturas heap, operações de inserção e remoção, e aplicações em filas de prioridade.',
-      professor: 'Prof. Maurício Serrano',
-      date: '28/11/2024',
-      dateValue: new Date('2024-11-28'),
-      downloads: 98,
-      version: 'v1.0',
-      isFavorite: false,
-      additionalInfo: undefined,
-      actionButtonText: 'Visualizar',
-      actionButtonLink: '#',
-      topic: 'arvores',
-      period: '2024-2'
-    },
-    {
-      type: 'pdf' as MaterialType,
-      title: 'Árvores B e B+ - Estruturas para BD',
-      description: 'Material detalhado sobre árvores B e B+, suas aplicações em sistemas de banco de dados e indexação.',
-      professor: 'Prof. Mauricio Serrano',
-      date: '25/11/2024',
-      dateValue: new Date('2024-11-25'),
-      downloads: 187,
-      version: 'v1.0',
-      isFavorite: false,
-      additionalInfo: '32 páginas',
-      actionButtonText: 'Visualizar',
-      actionButtonLink: '#',
-      topic: 'arvores',
-      period: '2024-2'
-    }
-  ];
+  // Filtrar apenas materiais publicados
+  const allMaterials = materials
+    .filter(material => material.status === 'Publicado')
+    .map(material => ({
+      type: material.type,
+      title: material.title,
+      description: material.description,
+      professor: material.professor,
+      date: material.date,
+      dateValue: material.dateValue,
+      downloads: material.downloads,
+      version: material.version,
+      isFavorite: material.isFavorite,
+      additionalInfo: material.additionalInfo,
+      actionButtonText: material.actionButtonText || 'Visualizar',
+      actionButtonLink: material.actionButtonLink || '#',
+      topic: material.topic,
+      period: material.period
+    }));
 
   const handleToggleFavorite = (index: number) => {
     // TODO: Implementar lógica de favoritos

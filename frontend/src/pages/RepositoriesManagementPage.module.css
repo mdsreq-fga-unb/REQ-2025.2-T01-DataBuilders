@@ -1,0 +1,414 @@
+.repositoriesManagementPage {
+  padding: 2rem 0;
+  background-color: #f9fafb;
+  min-height: calc(100vh - 200px);
+}
+
+.pageHeader {
+  margin-bottom: 2rem;
+}
+
+.pageTitle {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.pageDescription {
+  font-size: 1rem;
+  color: #6c757d;
+  margin: 0;
+}
+
+.headerActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.addButton {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background-color: #084298;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.addButton:hover {
+  background-color: #063970;
+}
+
+.tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.tab {
+  padding: 0.75rem 1.5rem;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: #6c757d;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-bottom: -2px;
+}
+
+.tab:hover {
+  color: #1a1a1a;
+}
+
+.tabActive {
+  color: #084298;
+  border-bottom-color: #084298;
+}
+
+.content {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table thead {
+  background-color: #f8f9fa;
+}
+
+.table th {
+  padding: 1rem;
+  text-align: left;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.table td {
+  padding: 1rem;
+  border-bottom: 1px solid #dee2e6;
+  font-size: 0.9375rem;
+  color: #1a1a1a;
+}
+
+.table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+.nameCell {
+  font-weight: 500;
+}
+
+.link {
+  color: #084298;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: #063970;
+  text-decoration: underline;
+}
+
+.description {
+  color: #6c757d;
+  max-width: 300px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.language {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: #eff6ff;
+  color: #2563eb;
+  border-radius: 0.25rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.organization {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: #1a1a1a;
+}
+
+.repositoryCount {
+  color: #6c757d;
+  font-size: 0.875rem;
+}
+
+.statusBadge {
+  padding: 0.375rem 0.75rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.statusActive {
+  background-color: #d1fae5;
+  color: #059669;
+}
+
+.statusActive:hover {
+  background-color: #a7f3d0;
+}
+
+.statusInactive {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.statusInactive:hover {
+  background-color: #fecaca;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.actionButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 0.375rem;
+  color: #6c757d;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.actionButton:hover {
+  background-color: #e9ecef;
+  border-color: #adb5bd;
+  color: #1a1a1a;
+}
+
+.deleteButton:hover {
+  background-color: #fee2e2;
+  border-color: #fecaca;
+  color: #dc2626;
+}
+
+@media (max-width: 991.98px) {
+  .headerActions {
+    justify-content: flex-start;
+    margin-top: 1rem;
+  }
+
+  .tableWrapper {
+    overflow-x: scroll;
+  }
+
+  .table {
+    min-width: 800px;
+  }
+}
+
+/* Modal Styles */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modalContent {
+  background-color: white;
+  border-radius: 1rem;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.modalHeader h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin: 0;
+}
+
+.modalClose {
+  background: none;
+  border: none;
+  color: #6c757d;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.modalClose:hover {
+  color: #1a1a1a;
+}
+
+.modalBody {
+  padding: 1.5rem;
+}
+
+.modalFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-top: 1px solid #dee2e6;
+}
+
+.formGroup {
+  margin-bottom: 1.25rem;
+}
+
+.label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+}
+
+.required {
+  color: #dc2626;
+}
+
+.input,
+.textarea,
+.select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  color: #1a1a1a;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.input:focus,
+.textarea:focus,
+.select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.select {
+  background-color: white;
+  cursor: pointer;
+}
+
+.cancelButton {
+  padding: 0.75rem 1.5rem;
+  background-color: white;
+  color: #1a1a1a;
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cancelButton:hover {
+  background-color: #f8f9fa;
+  border-color: #adb5bd;
+}
+
+.saveButton {
+  padding: 0.75rem 1.5rem;
+  background-color: #084298;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.saveButton:hover {
+  background-color: #063970;
+}
+
+@media (max-width: 576px) {
+  .tabs {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .tab {
+    border-bottom: 1px solid #dee2e6;
+    border-left: 3px solid transparent;
+    margin-bottom: 0;
+  }
+
+  .tabActive {
+    border-left-color: #084298;
+    border-bottom-color: #dee2e6;
+  }
+
+  .modalContent {
+    max-width: 100%;
+  }
+}
+

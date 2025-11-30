@@ -1,23 +1,11 @@
 import { useState, useMemo } from 'react';
+import { Link } from 'react-router-dom';
 import DefaultLayout from '../layouts/DefaultLayout';
 import { Breadcrumb } from '../components';
 import { FilterDropdown } from '../components/materials';
 import { NoticeCard } from '../components/notices';
-import type { PriorityType, PriorityLevel } from '../components/notices';
+import { useNotices } from '../context/NoticesContext';
 import styles from './NoticesPage.module.css';
-
-interface Notice {
-  priorityType: PriorityType;
-  priorityLevel: PriorityLevel;
-  title: string;
-  description: string;
-  author: string;
-  date: string;
-  time: string;
-  dateValue: Date;
-  category?: string;
-  period?: string;
-}
 
 function NoticesPage() {
   const [priority, setPriority] = useState('todas');
@@ -47,56 +35,7 @@ function NoticesPage() {
     { value: '2023-2', label: '2023.2' }
   ];
 
-  const allNotices: Notice[] = [
-    {
-      priorityType: 'urgente',
-      priorityLevel: 'alta',
-      title: 'Alteração na Data da Prova Final',
-      description: 'A prova final da disciplina foi reagendada para o dia 20/12/2024 às 14h00. Local: Sala AT-109. Favor confirmar presença.',
-      author: 'Prof. Mauricio Serrano',
-      date: '15/12/2024',
-      time: '09:30',
-      dateValue: new Date('2024-12-15T09:30:00'),
-      category: 'prova',
-      period: '2024-2'
-    },
-    {
-      priorityType: 'importante',
-      priorityLevel: 'media',
-      title: 'Material Complementar Disponível',
-      description: 'Novos exercícios sobre árvores AVL e B+ foram adicionados na seção de materiais. Recomendo a prática antes da prova.',
-      author: 'Prof. Mauricio Serrano',
-      date: '12/12/2024',
-      time: '16:45',
-      dateValue: new Date('2024-12-12T16:45:00'),
-      category: 'material',
-      period: '2024-2'
-    },
-    {
-      priorityType: 'informativo',
-      priorityLevel: 'baixa',
-      title: 'Horário de Atendimento Alterado',
-      description: 'A partir desta semana, o horário de atendimento será às terças e quintas, das 14h às 16h, na sala do professor.',
-      author: 'Prof. Mauricio Serrano',
-      date: '10/12/2024',
-      time: '11:20',
-      dateValue: new Date('2024-12-10T11:20:00'),
-      category: 'horario',
-      period: '2024-2'
-    },
-    {
-      priorityType: 'geral',
-      priorityLevel: 'baixa',
-      title: 'Lista de Exercícios 4 Disponível',
-      description: 'A quarta lista de exercícios sobre algoritmos de ordenação está disponível na seção de materiais. Prazo de entrega: 18/12/2024.',
-      author: 'Prof. Mauricio Serrano',
-      date: '08/12/2024',
-      time: '14:15',
-      dateValue: new Date('2024-12-08T14:15:00'),
-      category: 'exercicio',
-      period: '2024-2'
-    }
-  ];
+  const { notices, removeNotice, updateNotice } = useNotices();
 
   const handleMarkAsRead = (index: number) => {
     // TODO: Implementar lógica de marcar como lido
@@ -104,13 +43,20 @@ function NoticesPage() {
   };
 
   const handleEdit = (index: number) => {
-    // TODO: Implementar lógica de editar
-    console.log('Edit:', index);
+    const notice = notices[index];
+    if (notice) {
+      const newTitle = prompt('Editar título:', notice.title);
+      if (newTitle && newTitle.trim()) {
+        updateNotice(notice.id, { title: newTitle.trim() });
+      }
+    }
   };
 
   const handleDelete = (index: number) => {
-    // TODO: Implementar lógica de deletar
-    console.log('Delete:', index);
+    const notice = notices[index];
+    if (notice && window.confirm('Tem certeza que deseja excluir este aviso?')) {
+      removeNotice(notice.id);
+    }
   };
 
   const handleClearFilters = () => {
@@ -120,7 +66,8 @@ function NoticesPage() {
   };
 
   const filteredNotices = useMemo(() => {
-    let filtered = [...allNotices];
+    // Criar uma nova referência para garantir atualização imediata
+    let filtered = notices.map(n => ({ ...n }));
 
     // Filtro por prioridade
     if (priority !== 'todas') {
@@ -165,7 +112,7 @@ function NoticesPage() {
                   <div className={styles.infoButton}>
                     Total: {filteredNotices.length} avisos
                   </div>
-                  <button className={styles.newNoticeButton}>
+                  <Link to="/avisos/novo" className={styles.newNoticeButton}>
                     <svg 
                       width="20" 
                       height="20" 
@@ -179,7 +126,7 @@ function NoticesPage() {
                       <path d="M12 5v14M5 12h14" />
                     </svg>
                     Novo Aviso
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -239,15 +186,18 @@ function NoticesPage() {
 
           <div className={styles.noticesList}>
             {filteredNotices.length > 0 ? (
-              filteredNotices.map((notice, index) => (
-                <NoticeCard
-                  key={index}
-                  {...notice}
-                  onMarkAsRead={() => handleMarkAsRead(index)}
-                  onEdit={() => handleEdit(index)}
-                  onDelete={() => handleDelete(index)}
-                />
-              ))
+              filteredNotices.map((notice, index) => {
+                const noticeIndex = notices.findIndex(n => n.id === notice.id);
+                return (
+                  <NoticeCard
+                    key={notice.id}
+                    {...notice}
+                    onMarkAsRead={() => handleMarkAsRead(noticeIndex)}
+                    onEdit={() => handleEdit(noticeIndex)}
+                    onDelete={() => handleDelete(noticeIndex)}
+                  />
+                );
+              })
             ) : (
               <div className={styles.noResults}>
                 <p>Nenhum aviso encontrado com os filtros selecionados.</p>
