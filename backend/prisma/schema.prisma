@@ -1,0 +1,81 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String?  // opcional agora
+  role      Role     @default(MONITOR)
+  active    Boolean  @default(true)
+  
+  // Campos GitHub OAuth
+  githubId  String?  @unique
+  githubUsername String?
+  avatarUrl String?
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  materials     Material[]     @relation("authorMaterials")
+  repoFavorites RepoFavorite[]
+  notices       Notice[]
+}
+
+model Material {
+  id          String    @id @default(cuid())
+  title       String
+  description String?
+  contentUrl  String? // link para arquivo ou storage
+  format      String? // pdf, md, slides, code, etc
+  authorId    String
+  author      User      @relation(fields: [authorId], references: [id], name: "authorMaterials")
+  versions    Version[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  deleted     Boolean   @default(false)
+}
+
+model Version {
+  id         String   @id @default(cuid())
+  materialId String
+  material   Material @relation(fields: [materialId], references: [id])
+  editedBy   String
+  diff       String? // resumo/diff ou JSON
+  createdAt  DateTime @default(now())
+}
+
+model RepoFavorite {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  repoName  String
+  owner     String
+  url       String
+  language  String?
+  stars     Int?
+  createdAt DateTime @default(now())
+}
+
+model Notice {
+  id        String   @id @default(cuid())
+  title     String
+  body      String
+  authorId  String
+  author    User     @relation(fields: [authorId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deleted   Boolean  @default(false)
+}
+
+enum Role {
+  PROFESSOR
+  MONITOR
+  ADMIN
+}
