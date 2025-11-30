@@ -1,0 +1,40 @@
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label {
+  color: inherit;
+}
+
+.slides {
+  background-color: #dbeafe;
+  color: #2563eb;
+}
+
+.video {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.pdf {
+  background-color: #d1fae5;
+  color: #059669;
+}
+
+.codigo {
+  background-color: #ede9fe;
+  color: #7c3aed;
+}
+

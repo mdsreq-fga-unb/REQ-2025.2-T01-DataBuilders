@@ -1,0 +1,33 @@
+.filterContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.filterLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.filterSelect {
+  padding: 0.75rem 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  background-color: #f8f9fa;
+  color: #1a1a1a;
+  cursor: pointer;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.filterSelect:focus {
+  border-color: #084298;
+  box-shadow: 0 0 0 0.2rem rgba(8, 66, 152, 0.25);
+}
+
+.filterSelect:hover {
+  border-color: #adb5bd;
+}
+

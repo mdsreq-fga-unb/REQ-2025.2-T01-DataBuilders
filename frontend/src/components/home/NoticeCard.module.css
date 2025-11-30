@@ -1,0 +1,88 @@
+.card {
+  position: relative;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  background-color: var(--card-bg);
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: var(--bar-color);
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.content {
+  display: flex;
+  gap: 1rem;
+}
+
+.iconWrapper {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  background-color: var(--icon-bg);
+}
+
+.textContent {
+  flex-grow: 1;
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: var(--text-color);
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-color);
+  margin-bottom: 0.75rem;
+}
+
+.metadata {
+  font-size: 0.8125rem;
+  color: var(--text-color);
+  opacity: 0.8;
+}
+
+/* Variantes de cor */
+.warning {
+  --card-bg: #fee2e2;
+  --text-color: #dc2626;
+  --icon-bg: #dc2626;
+  --bar-color: #dc2626;
+}
+
+.info {
+  --card-bg: #dbeafe;
+  --text-color: #2563eb;
+  --icon-bg: #2563eb;
+  --bar-color: #2563eb;
+}
+
+.success {
+  --card-bg: #d1fae5;
+  --text-color: #059669;
+  --icon-bg: #059669;
+  --bar-color: #059669;
+}
+
+.extra {
+  --card-bg: #fef3c7;
+  --text-color: #d97706;
+  --icon-bg: #d97706;
+  --bar-color: #d97706;
+}
+
