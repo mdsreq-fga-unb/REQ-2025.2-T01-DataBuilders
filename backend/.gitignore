@@ -1,0 +1,6 @@
+# Ignore environment
+.env
+
+# Node and build artifacts
+node_modules/
+dist/

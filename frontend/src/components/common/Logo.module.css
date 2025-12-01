@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.logoBox {
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #084298;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+}
+
+.logoText {
+  color: #1a1a1a;
+  font-size: 20px;
+  font-weight: bold;
+  margin-left: 0.5rem;
+}
+

@@ -1,0 +1,154 @@
+.card {
+  background-color: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.githubIcon {
+  color: #1a1a1a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.favoriteButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.favoriteButton:hover {
+  transform: scale(1.1);
+}
+
+.title {
+  font-size: 1.125rem;
+  font-weight: bold;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.description {
+  font-size: 0.875rem;
+  color: #6c757d;
+  line-height: 1.5;
+  margin-bottom: 0.75rem;
+  flex-grow: 1;
+}
+
+.metadata {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.separator {
+  color: #adb5bd;
+}
+
+.updatedDate {
+  color: #6c757d;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.stars {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.starCount {
+  font-size: 0.875rem;
+  color: #1a1a1a;
+  font-weight: 500;
+}
+
+.readmeStatus {
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  font-weight: 500;
+}
+
+.readmeActive {
+  background-color: #d1fae5;
+  color: #059669;
+}
+
+.readmeInactive {
+  background-color: #fee2e2;
+  color: #dc2626;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+.primaryButton {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  background-color: #084298;
+  color: white;
+  text-decoration: none;
+  border-radius: 0.375rem;
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: background-color 0.2s ease;
+}
+
+.primaryButton:hover {
+  background-color: #063970;
+}
+
+.secondaryButton {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  background-color: white;
+  color: #084298;
+  border: 1px solid #084298;
+  text-decoration: none;
+  border-radius: 0.375rem;
+  text-align: center;
+  font-weight: 500;
+  font-size: 0.875rem;
+  transition: all 0.2s ease;
+}
+
+.secondaryButton:hover {
+  background-color: #084298;
+  color: white;
+}
+
