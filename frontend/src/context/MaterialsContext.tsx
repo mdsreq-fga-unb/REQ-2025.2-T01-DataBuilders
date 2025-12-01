@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, ReactNode } from 'react';
 
-export type MaterialType = 'slides' | 'video' | 'pdf' | 'codigo';
+export type MaterialType = 'slides' | 'video' | 'pdf' | 'codigo' | 'material complementar' | 'plano de ensino' | 'lista' | 'livros';
 
 export interface MaterialData {
   id: string;
