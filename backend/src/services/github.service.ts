@@ -1,4 +1,3 @@
-// backend/src/services/github.service.ts
 import { Octokit } from '@octokit/rest';
 import { GITHUB_TOKEN, ALLOWED_ORGS } from '../config';
 

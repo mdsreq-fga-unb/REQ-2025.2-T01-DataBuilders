@@ -87,7 +87,6 @@ function RepositoryCard({
           </svg>
           <span className={styles.starCount}>{stars}</span>
         </div>
-
         <span className={`${styles.readmeStatus} ${getReadmeStatusClass()}`}>
           {getReadmeStatusText()}
         </span>

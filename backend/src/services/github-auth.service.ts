@@ -1,4 +1,3 @@
-// src/services/github-auth.service.ts
 import { Octokit } from '@octokit/rest';
 import { prisma } from '../prisma/client';
 import jwt from 'jsonwebtoken';

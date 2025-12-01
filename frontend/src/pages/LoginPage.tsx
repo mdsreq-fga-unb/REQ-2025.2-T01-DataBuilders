@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../components/common/Logo';
 import styles from './LoginPage.module.css';
+import { login as apiLogin } from '../services/auth';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
@@ -10,7 +11,7 @@ function LoginPage() {
   const [error, setError] = useState('');
   const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
 
@@ -20,10 +21,13 @@ function LoginPage() {
       return;
     }
 
-    // TODO: Integrar com API de autenticação
-    // Por enquanto, apenas redireciona para o dashboard
-    console.log('Login:', { email, password });
-    navigate('/dashboard');
+    try {
+      await apiLogin(email, password);
+      navigate('/dashboard');
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Falha ao autenticar';
+      setError(message);
+    }
   };
 
   return (
@@ -140,4 +144,3 @@ function LoginPage() {
 }
 
 export default LoginPage;
-

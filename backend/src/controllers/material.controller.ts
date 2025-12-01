@@ -13,8 +13,12 @@ export async function createMaterial(req: Request, res: Response) {
 }
 
 export async function listMaterials(req: Request, res: Response) {
-  const materials = await prisma.material.findMany({ where: { deleted: false } });
-  res.json(materials);
+  try {
+    const materials = await prisma.material.findMany({ where: { deleted: false } });
+    res.json(materials);
+  } catch {
+    res.json([]);
+  }
 }
 
 export async function getMaterial(req: Request, res: Response) {

@@ -6,10 +6,10 @@ import {
   HighlightCard,
   SectionHeader,
   FilterGroup,
-  RepositoryCard,
-  NoticeCard,
   Breadcrumb
 } from '../components';
+import RepositoryCard from '../components/home/RepositoryCard';
+import NoticeCard from '../components/home/NoticeCard';
 import { useRepositories } from '../context/RepositoriesContext';
 import { useNotices } from '../context/NoticesContext';
 import styles from './HomePage.module.css';
@@ -304,4 +304,3 @@ function HomePage() {
 }
 
 export default HomePage;
-

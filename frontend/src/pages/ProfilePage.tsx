@@ -5,6 +5,8 @@ import { useMaterials } from '../context/MaterialsContext';
 import { useNotices } from '../context/NoticesContext';
 import { useRepositories } from '../context/RepositoriesContext';
 import styles from './ProfilePage.module.css';
+import { useEffect, useState } from 'react';
+import { getMe, updateMe, type UserProfile } from '../services/user';
 
 interface Statistic {
   icon: React.ReactNode;
@@ -19,13 +21,18 @@ function ProfilePage() {
   const { notices } = useNotices();
   const { repositories } = useRepositories();
 
-  // Dados mockados do usuário
+  const [user, setUser] = useState<UserProfile | null>(null);
+  useEffect(() => {
+    getMe().then(setUser).catch(() => {
+      setUser({ id: 'local', name: 'Usuário', email: 'usuario@example.com', role: 'MONITOR' });
+    });
+  }, []);
   const userData = {
-    avatar: 'MS',
-    name: 'Prof. Maurício Serrano',
-    role: 'Professor de Estruturas de Dados 2',
-    email: 'mauricio.serrano@unb.br',
-    tags: ['Professor', 'Departamento de Ciência da Computação']
+    avatar: (user?.name?.slice(0,2) || 'US').toUpperCase(),
+    name: user?.name || '',
+    role: user?.role || '',
+    email: user?.email || '',
+    tags: ['Perfil']
   };
 
   // Calcular estatísticas dinâmicas
@@ -132,6 +139,10 @@ function ProfilePage() {
                   email={userData.email}
                   userType="Professor"
                   department="Ciência da Computação"
+                  onSaved={async (values) => {
+                    const updated = await updateMe({ name: values.fullName, email: values.email });
+                    setUser(updated);
+                  }}
                 />
                 <ChangePasswordCard />
               </div>
@@ -257,4 +268,3 @@ function ProfilePage() {
 }
 
 export default ProfilePage;
-

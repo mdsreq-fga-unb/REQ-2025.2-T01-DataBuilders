@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import { api } from '../services/api';
 
 export type MaterialType = 'slides' | 'video' | 'pdf' | 'codigo';
 
@@ -33,104 +34,69 @@ interface MaterialsContextType {
 const MaterialsContext = createContext<MaterialsContextType | undefined>(undefined);
 
 export function MaterialsProvider({ children }: { children: ReactNode }) {
-  const [materials, setMaterials] = useState<MaterialData[]>([
-    {
-      id: '1',
-      type: 'slides',
-      title: 'Árvores AVL - Conceitos e Implementação',
-      description: 'Slides completos sobre árvores AVL, incluindo operações de inserção, remoção e balanceamento automático.',
-      professor: 'Prof. Mauricio Serrano',
-      date: '10/12/2024',
-      dateValue: new Date('2024-12-10'),
-      downloads: 156,
-      version: 'v2.1',
-      isFavorite: false,
-      topic: 'arvores',
-      period: '2024-2',
-      status: 'Publicado',
-      updatedAt: 'há 2 horas'
-    },
-    {
-      id: '2',
-      type: 'video',
-      title: 'Algoritmo de Dijkstra - Aula Prática',
-      description: 'Videoaula demonstrando a implementação e execução do algoritmo de Dijkstra para encontrar caminhos mínimos.',
-      professor: 'Prof. Maurício Serrano',
-      date: '08/12/2024',
-      dateValue: new Date('2024-12-08'),
-      downloads: 89,
-      version: 'v1.0',
-      isFavorite: true,
-      additionalInfo: '45min',
-      actionButtonText: 'Assistir',
-      topic: 'grafos',
-      period: '2024-2',
-      status: 'Publicado',
-      updatedAt: 'há 3 dias'
-    },
-    {
-      id: '3',
-      type: 'pdf',
-      title: 'Tabelas Hash - Teoria e Aplicações',
-      description: 'Apostila completa sobre estruturas de hash, funções de dispersão e métodos de resolução de colisões.',
-      professor: 'Prof. Mauricio Serrano',
-      date: '05/12/2024',
-      dateValue: new Date('2024-12-05'),
-      downloads: 203,
-      version: 'v1.2',
-      isFavorite: false,
-      additionalInfo: '24 páginas',
-      topic: 'hash',
-      period: '2024-2',
-      status: 'Publicado',
-      updatedAt: 'há 5 dias'
-    },
-    {
-      id: '4',
-      type: 'codigo',
-      title: 'Implementações de QuickSort',
-      description: 'Código fonte completo do QuickSort em Python, Java e C++ com análise de complexidade e otimizações.',
-      professor: 'Prof. Maurício Serrano',
-      date: '03/12/2024',
-      dateValue: new Date('2024-12-03'),
-      downloads: 134,
-      version: 'v1.1',
-      isFavorite: true,
-      additionalInfo: '3 linguagens',
-      actionButtonText: 'Ver Código',
-      topic: 'ordenacao',
-      period: '2024-2',
-      status: 'Rascunho',
-      updatedAt: 'ontem'
-    }
-  ]);
+  const [materials, setMaterials] = useState<MaterialData[]>([]);
 
-  const addMaterial = (material: Omit<MaterialData, 'id'>) => {
-    const newMaterial: MaterialData = {
-      ...material,
-      id: Date.now().toString(),
-      date: new Date().toLocaleDateString('pt-BR'),
-      dateValue: new Date(),
+  function mapBackendMaterial(m: any): MaterialData {
+    const createdAt = m.createdAt ? new Date(m.createdAt) : new Date();
+    const format = String(m.format || 'slides') as MaterialType;
+    return {
+      id: String(m.id),
+      type: ['slides','video','pdf','codigo'].includes(format) ? format : 'slides',
+      title: String(m.title || ''),
+      description: m.description ? String(m.description) : '',
+      professor: 'Prof. Mauricio Serrano',
+      date: createdAt.toLocaleDateString('pt-BR'),
+      dateValue: createdAt,
       downloads: 0,
+      version: 'v1.0',
       isFavorite: false,
-      status: material.status || 'Publicado',
-      updatedAt: 'agora'
+      additionalInfo: undefined,
+      actionButtonText: 'Visualizar',
+      actionButtonLink: m.contentUrl ? String(m.contentUrl) : '#',
+      topic: undefined,
+      period: '2024-2',
+      status: m.deleted ? 'Rascunho' : 'Publicado',
+      updatedAt: undefined,
     };
-    setMaterials(prev => [...prev, newMaterial]);
+  }
+
+  useEffect(() => {
+    api.get('/materials')
+      .then((res) => {
+        const arr = Array.isArray(res) ? res : [];
+        const mapped = arr.map(mapBackendMaterial);
+        setMaterials(mapped);
+      })
+      .catch(() => {
+        setMaterials([]);
+      });
+  }, []);
+
+  const addMaterial = async (material: Omit<MaterialData, 'id'>) => {
+    const payload = {
+      title: material.title,
+      description: material.description,
+      contentUrl: material.actionButtonLink,
+      format: material.type,
+    };
+    const created = await api.post('/materials', payload);
+    const mapped = mapBackendMaterial(created);
+    setMaterials(prev => [mapped, ...prev]);
   };
 
-  const removeMaterial = (id: string) => {
+  const removeMaterial = async (id: string) => {
+    await api.delete(`/materials/${id}`);
     setMaterials(prev => prev.filter(material => material.id !== id));
   };
 
-  const updateMaterial = (id: string, updates: Partial<MaterialData>) => {
-    setMaterials(prev =>
-      prev.map(material => 
-        material.id === id 
-          ? { ...material, ...updates, updatedAt: 'agora' }
-          : material
-      )
-    );
+  const updateMaterial = async (id: string, updates: Partial<MaterialData>) => {
+    const payload: any = {};
+    if (updates.title !== undefined) payload.title = updates.title;
+    if (updates.description !== undefined) payload.description = updates.description;
+    if (updates.type !== undefined) payload.format = updates.type;
+    if (updates.actionButtonLink !== undefined) payload.contentUrl = updates.actionButtonLink;
+    const updated = await api.put(`/materials/${id}`, payload);
+    setMaterials(prev => prev.map(m => (m.id === id ? { ...m, ...mapBackendMaterial(updated) } : m)));
   };
 
   const versionMaterial = (id: string) => {
