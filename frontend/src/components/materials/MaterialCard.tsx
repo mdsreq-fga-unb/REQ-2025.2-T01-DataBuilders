@@ -1,10 +1,11 @@
-import { Link } from 'react-router-dom';
+import { useMaterials } from '../../context/MaterialsContext'; 
 import MaterialTypeBadge from './MaterialTypeBadge';
 import styles from './MaterialCard.module.css';
 
 export type MaterialType = 'slides' | 'video' | 'pdf' | 'codigo';
 
 interface MaterialCardProps {
+  id: string; 
   type: MaterialType;
   title: string;
   description: string;
@@ -14,13 +15,13 @@ interface MaterialCardProps {
   version: string;
   isFavorite: boolean;
   onToggleFavorite?: () => void;
-  additionalInfo?: string; // Ex: "45min", "24 páginas", "3 linguagens"
-  actionButtonText?: string; // Ex: "Visualizar", "Assistir", "Ver Código"
+  additionalInfo?: string;
+  actionButtonText?: string;
   actionButtonLink?: string;
-  downloadLink?: string;
 }
 
 function MaterialCard({
+  id,
   type,
   title,
   description,
@@ -33,8 +34,14 @@ function MaterialCard({
   additionalInfo,
   actionButtonText = 'Visualizar',
   actionButtonLink = '#',
-  downloadLink = '#'
 }: MaterialCardProps) {
+  
+  const { registerDownload } = useMaterials();
+
+  const handleActionClick = () => {
+    registerDownload(id);
+  };
+
   return (
     <div className={styles.card}>
       <div className={styles.cardHeader}>
@@ -82,16 +89,18 @@ function MaterialCard({
       </div>
 
       <div className={styles.actions}>
-        <Link to={actionButtonLink} className={styles.primaryButton}>
+        <a 
+          href={actionButtonLink} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className={styles.primaryButton}
+          onClick={handleActionClick}
+        >
           {actionButtonText}
-        </Link>
-        <Link to={downloadLink} className={styles.secondaryButton}>
-          Download
-        </Link>
+        </a>
       </div>
     </div>
   );
 }
 
 export default MaterialCard;
-

@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-  "build": "tsc",
-  "start": "node dist/server.js",
-  "prisma:migrate": "prisma migrate dev",
-  "prisma:generate": "prisma generate",
-  "prisma:seed": "ts-node prisma/seed.ts",
-  "lint": "eslint . --ext .ts",
-  "format": "prettier --write ."
+    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:generate": "prisma generate",
+    "prisma:seed": "ts-node prisma/seed.ts",
+    "lint": "eslint . --ext .ts",
+    "format": "prettier --write ."
   },
   "keywords": [],
   "author": "",
@@ -20,6 +20,7 @@
   "dependencies": {
     "@octokit/rest": "^22.0.1",
     "@prisma/client": "^6.19.0",
+    "@supabase/supabase-js": "^2.86.0",
     "bcryptjs": "^3.0.3",
     "cors": "^2.8.5",
     "dotenv": "^17.2.3",
