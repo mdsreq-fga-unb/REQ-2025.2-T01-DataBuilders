@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { changePassword } from '../../services/user';
 import styles from './ChangePasswordCard.module.css';
 
 function ChangePasswordCard() {
@@ -6,15 +7,26 @@ function ChangePasswordCard() {
   const [newPassword, setNewPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-
-    // TODO: Integrar com backend quando disponível
-    console.log('Alterar senha', {
-      currentPassword,
-      newPassword,
-      confirmPassword
-    });
+    if (!currentPassword || !newPassword || !confirmPassword) {
+      alert('Preencha todos os campos');
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      alert('A confirmação não coincide');
+      return;
+    }
+    try {
+      await changePassword(currentPassword, newPassword);
+      setCurrentPassword('');
+      setNewPassword('');
+      setConfirmPassword('');
+      alert('Senha alterada com sucesso');
+    } catch (err) {
+      const msg = err instanceof Error ? err.message : 'Falha ao alterar senha';
+      alert(msg);
+    }
   };
 
   return (

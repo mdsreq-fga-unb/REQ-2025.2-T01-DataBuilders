@@ -6,18 +6,18 @@ interface UserInfoFormProps {
   email: string;
   userType: string;
   department: string;
+  onSaved?: (values: { fullName: string; email: string; userType: string; department: string }) => void;
 }
 
-function UserInfoForm({ fullName: initialFullName, email: initialEmail, userType: initialUserType, department: initialDepartment }: UserInfoFormProps) {
+function UserInfoForm({ fullName: initialFullName, email: initialEmail, userType: initialUserType, department: initialDepartment, onSaved }: UserInfoFormProps) {
   const [fullName, setFullName] = useState(initialFullName);
   const [email, setEmail] = useState(initialEmail);
   const [userType, setUserType] = useState(initialUserType);
   const [department, setDepartment] = useState(initialDepartment);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Aqui você pode adicionar a lógica para salvar as informações
-    console.log('Salvando informações:', { fullName, email, userType, department });
+    if (onSaved) await onSaved({ fullName, email, userType, department });
   };
 
   return (
@@ -80,4 +80,3 @@ function UserInfoForm({ fullName: initialFullName, email: initialEmail, userType
 }
 
 export default UserInfoForm;
-

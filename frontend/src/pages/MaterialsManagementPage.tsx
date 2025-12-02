@@ -147,4 +147,3 @@ function MaterialsManagementPage() {
 }
 
 export default MaterialsManagementPage;
-

@@ -30,55 +30,51 @@ function generateVariants(tokenRaw: string): string[] {
 
   variants.add(token); // original normalized
 
-  // 1) plural simple: +s (cobertura -> coberturas)
+  // 1) plural simple: +s
   if (!token.endsWith('s')) variants.add(token + 's');
 
-  // 2) if ends with 'ão' -> 'ões' and 'ãos' (common variants)
+  // 2) if ends with 'ao' -> 'oes' and 'aos'
   if (token.endsWith('ao')) {
-    variants.add(token.replace(/ao$/, 'oes')); // ordenacao -> ordenacoes
-    variants.add(token.replace(/ao$/, 'aos')); // raro, mas cobre casos
+    variants.add(token.replace(/ao$/, 'oes'));
+    variants.add(token.replace(/ao$/, 'aos'));
   }
 
-  // 3) if ends with 'm' -> replace with 'ns' (item -> itens)
+  // 3) m -> ns
   if (token.endsWith('m')) {
     variants.add(token.replace(/m$/, 'ns'));
   }
 
-  // 4) if ends with 'l' -> replace with 'is' (papel -> papeis)
+  // 4) l -> is (papel -> papeis)
   if (token.endsWith('l')) {
     variants.add(token.replace(/l$/, 'is'));
-    // also try replacing 'il' -> 'is' (fácil -> faciles) — but careful: 'bil'->'bis'
     if (token.endsWith('il')) {
       variants.add(token.replace(/il$/, 'is'));
     }
   }
 
-  // 5) if ends with 'r', 'z', 'n' -> +es (valor -> valores)
+  // 5) r/z/n -> +es
   if (/[rzn]$/.test(token)) {
     variants.add(token + 'es');
   }
 
-  // 6) handle English-ish endings common in CS: 'y' -> 'ies' (array -> arrays; but many false positives)
-  // We'll add a conservative rule: if ends with 'y' and not vowel+y, add +s
+  // 6) y -> +s (conservador)
   if (token.endsWith('y')) {
     variants.add(token + 's');
   }
 
-  // 7) acronyms/abbrev: keep original uppercase form normalized already; also add lowercase (already)
-  // 8) fallback: the singular form without trailing 's' if user typed plural
+  // 8) if token ends with 's', add singular candidate
   if (token.endsWith('s')) {
     const sing = token.replace(/s$/, '');
     if (sing) variants.add(sing);
   }
 
-  // 9) small domain-driven extra (algoritmo -> algoritmos etc.) covered by +s; add some manual technical variants
-  const domainExtras = ['avl', 'red', 'black', 'bst', 'heap', 'merge', 'quick', 'insertion', 'bubble'];
+  // 9) domain extras (common algorithm names)
+  const domainExtras = ['avl', 'red', 'black', 'bst', 'heap', 'merge', 'quick', 'insertion', 'bubble', 'dijkstra'];
   if (domainExtras.includes(token)) {
-    variants.add(token); // already
+    variants.add(token);
     variants.add(token + 's');
   }
 
-  // dedupe and return array
   return Array.from(variants);
 }
 
@@ -86,10 +82,27 @@ function generateVariants(tokenRaw: string): string[] {
 async function getReadmeText(owner: string, repo: string): Promise<string | null> {
   try {
     const res = await octokit.repos.getReadme({ owner, repo });
-    const b64 = (res.data.content as unknown as string) || '';
-    // decode base64 (handle typings)
-    const buff = Buffer.from(b64, 'base64');
-    return buff.toString('utf8');
+    // octokit may provide content base64-encoded in res.data.content
+    // When using octokit.repos.getReadme the response has data.content (base64) OR data as a blob depending on accept headers.
+    // We'll try to decode content if present, otherwise attempt to get the raw content.
+    // @ts-ignore
+    const b64 = (res.data && (res.data.content as string)) || null;
+    if (b64) {
+      const buff = Buffer.from(b64, 'base64');
+      return buff.toString('utf8');
+    }
+    // fallback: sometimes res.data has `.content` undefined; try to fetch README as raw text
+    try {
+      const raw = await octokit.request('GET /repos/{owner}/{repo}/readme', {
+        owner,
+        repo,
+        headers: { accept: 'application/vnd.github.v3.raw' }
+      });
+      if (typeof raw.data === 'string') return raw.data;
+    } catch {
+      // ignore fallback error
+    }
+    return null;
   } catch (err: any) {
     return null;
   }
@@ -106,9 +119,19 @@ async function repoContainsLanguage(owner: string, repo: string, language: strin
   }
 }
 
+/** helper to check README existence without loading large content (tries getReadmeText but returns boolean) */
+async function checkReadmeExists(owner: string, repo: string): Promise<boolean> {
+  try {
+    const res = await octokit.repos.getReadme({ owner, repo });
+    return !!res.data;
+  } catch {
+    return false;
+  }
+}
+
 type SortOpt = 'stars' | 'forks' | 'help-wanted-issues' | 'updated';
 
-type RepoResult = {
+type ApiRepoItem = {
   id: number;
   name: string;
   full_name: string;
@@ -117,14 +140,20 @@ type RepoResult = {
   description: string | null;
   language: string | null;
   stargazers_count: number | null;
+  readmeExists: boolean;
+  updated_at: string | null;
 };
 
 /**
- * searchReposAdvancedWithPlurals
- * - q: search terms
- * - languageFilter: contains-language (any language present)
- * - deep: when true, performs README + languages checks
- * - exactWordMatchInReadme: when true, require whole-word match in README (regex \b)
+ * searchRepos
+ *
+ * q: search terms
+ * languageFilter: optional string (used for contains-language check when deep=true)
+ * page, per_page: pagination for GitHub Search
+ * sort: GitHub allowed sort or undefined (omitted -> best-match)
+ * deep: when true, performs per-repo checks (README, languages) for top results
+ * exactWordMatchInReadme: when true, use word-boundary regex for README matching
+ * readmeOnly: when true, only return repos that have README (readmeExists === true)
  */
 export async function searchRepos(
   q: string,
@@ -133,41 +162,47 @@ export async function searchRepos(
   per_page = 20,
   sort?: SortOpt,
   deep = true,
-  exactWordMatchInReadme = false
-): Promise<RepoResult[]> {
+  exactWordMatchInReadme = false,
+  readmeOnly?: boolean
+): Promise<ApiRepoItem[]> {
   if (!q || !q.trim()) return [];
 
-  // tokens raw
   const rawTokens = q.trim().split(/\s+/);
 
-  // build tokenQueries using generated variants but LIMIT number of variants per token to avoid very large queries
+  // build tokenQueries using generated variants but limit number of variants per token
   const tokenQueriesParts: string[] = [];
   for (const tok of rawTokens) {
     const variants = generateVariants(tok);
-    // limit to max 6 variants to avoid query explosion
     const limited = variants.slice(0, 6);
-    // escape and wrap multi-word variants in quotes
     const escaped = limited.map(v => (/\s/.test(v) ? `"${v}"` : v));
     tokenQueriesParts.push(`(${escaped.join(' OR ')})`);
   }
 
-  let query = `${tokenQueriesParts.join(' ')} in:name,readme,description`;
+  // base query: force searching in name,readme,description
+  let queryStr = `${tokenQueriesParts.join(' ')} in:name,readme,description`;
+
+  // If ALLOWED_ORGS is set and non-empty, restrict to these organizations
   if (Array.isArray(ALLOWED_ORGS) && ALLOWED_ORGS.length) {
     const orgClause = '(' + ALLOWED_ORGS.map(o => `org:${o}`).join(' OR ') + ')';
-    query = `${query} ${orgClause}`;
+    queryStr = `${queryStr} ${orgClause}`;
   }
-  const params: any = { q: query, page, per_page };
+
+  const params: any = { q: queryStr, page, per_page };
   if (sort) params.sort = sort;
 
   const searchRes = await octokit.search.repos(params);
   const items = searchRes.data.items || [];
+
+  // limit number of repos to deepen checks (prevent many per-repo requests)
   const DEEP_LIMIT = 30;
   const itemsToProcess = deep ? items.slice(0, DEEP_LIMIT) : items;
 
+  // if not deep, we do a cheap mapping and light language filter (primary language only)
   if (!deep) {
     const mapped = items
       .filter(i => {
         if (!languageFilter) return true;
+        // cheap check: compare primary language (may not represent "contains")
         return (i.language && normalize(i.language) === normalize(languageFilter));
       })
       .map(i => ({
@@ -178,19 +213,36 @@ export async function searchRepos(
         html_url: i.html_url,
         description: i.description ?? null,
         language: i.language ?? null,
-        stargazers_count: i.stargazers_count ?? null
+        stargazers_count: i.stargazers_count ?? null,
+        readmeExists: false, // not checked in shallow mode
+        updated_at: (i.updated_at ?? i.pushed_at ?? null) as string | null
       }));
+    // if readmeOnly is requested but we didn't check README in shallow mode, we must filter them out (conservative)
+    if (readmeOnly) {
+      // do a synchronous loop to check README existence (but shallow mode wasn't intended for readmeOnly)
+      const resultsWithReadme: ApiRepoItem[] = [];
+      for (const r of mapped) {
+        if (!r.owner) continue;
+        const has = await checkReadmeExists(r.owner, r.name);
+        if (has) {
+          resultsWithReadme.push({ ...r, readmeExists: true });
+        }
+      }
+      return resultsWithReadme;
+    }
     return mapped;
   }
 
-  const results: RepoResult[] = [];
+  // deep mode -> perform per-repo checks
+  const results: ApiRepoItem[] = [];
 
+  // Note: sequential processing to avoid burst rate-limit. Consider adding concurrency limiter (p-limit) and caching in production.
   for (const repo of itemsToProcess) {
     const ownerLogin = repo.owner?.login;
     if (!ownerLogin) continue;
 
-    // NAME matching: split identifier into tokens and compare against variants/stems
-    const nameTokens = splitIdentifier(repo.name); // normalized tokens
+    // NAME check
+    const nameTokens = splitIdentifier(repo.name);
     const fullNameTokens = splitIdentifier(repo.full_name);
     let nameMatch = false;
     for (const rawTok of rawTokens) {
@@ -204,14 +256,14 @@ export async function searchRepos(
       if (nameMatch) break;
     }
 
-    // DESCRIPTION check
+    // DESCRIPTION (About) check
     const desc = repo.description ? normalize(repo.description) : '';
     const descMatch = rawTokens.some(rt => {
       const vars = generateVariants(rt);
       return vars.some(v => desc.includes(v));
     });
 
-    // README check
+    // README check (download and inspect)
     let readmeText: string | null = null;
     let readmeMatch = false;
     try {
@@ -233,12 +285,16 @@ export async function searchRepos(
           });
         }
       }
-    } catch (err) {
+    } catch {
       readmeMatch = false;
     }
 
     const candidateMatch = nameMatch || descMatch || readmeMatch;
     if (!candidateMatch) continue;
+
+    // If readmeOnly was requested, require README match/existence
+    const hasAnyReadme = !!readmeText || await checkReadmeExists(ownerLogin, repo.name);
+    if (readmeOnly && !hasAnyReadme) continue;
 
     // language containment check
     if (languageFilter && languageFilter.trim()) {
@@ -246,6 +302,7 @@ export async function searchRepos(
       if (!hasLang) continue;
     }
 
+    // If we got here, repo is accepted: build ApiRepoItem
     results.push({
       id: repo.id,
       name: repo.name,
@@ -254,7 +311,9 @@ export async function searchRepos(
       html_url: repo.html_url,
       description: repo.description ?? null,
       language: repo.language ?? null,
-      stargazers_count: repo.stargazers_count ?? null
+      stargazers_count: repo.stargazers_count ?? null,
+      readmeExists: !!readmeMatch || !!readmeText,
+      updated_at: (repo.updated_at ?? repo.pushed_at ?? null) as string | null
     });
   }
 
