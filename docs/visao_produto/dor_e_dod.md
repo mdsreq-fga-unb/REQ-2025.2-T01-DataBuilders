@@ -19,5 +19,4 @@ No contexto deste projeto, considera-se que um requisito está “feito” quand
 - Foi **implementado de forma completa** e está **funcional**;
 - **Agrega valor ao produto**;
 - **Todos os critérios de aceitação** foram cumpridos;
-- **Passou nos testes unitários e de integração**, assegurando qualidade e estabilidade;
-- As **funcionalidades foram documentadas**, quando necessário.
+- As **funcionalidades foram documentadas** sempre que exigiam especificação adicional, como regras de negócio, exceções, fluxos alternativos ou comportamentos não triviais.
