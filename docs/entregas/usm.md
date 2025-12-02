@@ -281,7 +281,7 @@ Como farmacêutica, eu quero registrar lote e validade ao dispensar medicamentos
 
 **Critérios de Aceitação:**  
 - Solicitar lote e validade antes da dispensa.  
-- Atualizar estoque automaticamente.  
+- Atualizar estoque automaticamente
 - Alertar quando a validade for inferior a 30 dias.
 
 **BDD:**  

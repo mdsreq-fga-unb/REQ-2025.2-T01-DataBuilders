@@ -61,14 +61,15 @@ nav:
 
   - Entregas: 
     - Unidade 1: 
-      - Vídeo: entregas/unidade1.md
+        - Vídeo: entregas/unidade1.md
     - Unidade 2: 
-      -Vídeo: entregas/unidade2.md
+        - Vídeo: entregas/unidade2.md
     - Unidade 3: 
-      - Vídeo: entregas/unidade3.md
-      - Product Backlog Building: entregas/pbb.md
-      - User Story Mapping: entregas/usm.md
-      - Casos de uso: entregas/uc.md
+        - Vídeo: entregas/unidade3.md
+        - Product Backlog Building: entregas/pbb.md
+        - User Story Mapping: entregas/usm.md
+        - Casos de uso: entregas/uc.md
+
 
 markdown_extensions:
 

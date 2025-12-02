@@ -4,7 +4,7 @@ O diagrama de caso de uso do **ConnectCare** representa as principais interaçõ
 
 ---
 
-# 2. Contexto do Sistema ConnectCare
+# 2. Contexto 
 
 O **ConnectCare** é uma plataforma criada para melhorar o acesso à saúde em comunidades vulneráveis, como a Vila Esperança — um local remoto com infraestrutura limitada, escassez de profissionais de saúde e baixa disponibilidade de internet. Apesar dessas dificuldades, a comunidade possui forte senso de colaboração, o que possibilitou a criação de uma solução voltada para ampliar o alcance dos serviços médicos locais.
 
