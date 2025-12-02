@@ -37,7 +37,7 @@ Nota-se que os objetivos específicos foram previamente listados na página "Sol
 
 ### Complexidade
 
-Para auxiliar na construção da tabela MoSCoW, foi estabelecido uma matriz de complexidade no [**Figma**](https://www.figma.com/board/Kw9DsJ4TlWcCwdi1I62q7I/Sem-t%C3%ADtulo?node-id=0-1&t=RC2qap7qIVX463fv-1), aonde a equipe debateu sobre o conhecimento dos membros acerca das tecnlogias utilizadas e das funcionalidades a serem implementadas.
+Para auxiliar na construção da tabela MoSCoW, foi estabelecido uma matriz de complexidade no [**Figma**](https://www.figma.com/board/Kw9DsJ4TlWcCwdi1I62q7I/Sem-t%C3%ADtulo?node-id=0-1&t=RC2qap7qIVX463fv-1), aonde a equipe debateu sobre o conhecimento dos membros acerca das tecnlogias utilizadas e das funcionalidades a serem implementadas. Desse debate, surgiu a ideia de "alta complexidade" e "baixa complexidade". "Alta complexidade" é uma feature cuja implementação e tecnologias associadas ou não são de conhecimento prévio da equipe de desenvolviemnto ou são consideradas trabalhosas (três dias ou mais de produção). "Baixa complexidade" é oposto, são de implementação e tecnologia conhecida, podendo rapidamente ser produzidas (em torno de um dia).
 
 ---
 
