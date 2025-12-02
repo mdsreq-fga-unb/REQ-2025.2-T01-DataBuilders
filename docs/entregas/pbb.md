@@ -37,7 +37,7 @@ A proposta do PBB é **estruturar e entender esses fluxos**, identificando funci
 ## 3. Canvas PBB
 
 ![pbb-image](pbb.png)
-[Acessa PBB no Miro](https://miro.com/app/board/uXjVJDF_XEY=/?moveToWidget=3458764647714443252&cot=14)
+[Acesse PBB no Miro](https://miro.com/app/board/uXjVJDF_XEY=/?moveToWidget=3458764647714443252&cot=14)
 
 ---
 

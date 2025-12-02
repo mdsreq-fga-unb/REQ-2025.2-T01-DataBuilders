@@ -62,7 +62,7 @@ Os problemas principais incluem:
 ## 3. User Story Mapping (USM)
 
 ![usm_image](usm.png)
-[Acessar USM no Miro](https://miro.com/app/board/uXjVJDF_XEY=/?moveToWidget=3458764647793097261&cot=14)
+[Acesse USM no Miro](https://miro.com/app/board/uXjVJDF_XEY=/?moveToWidget=3458764647793097261&cot=14)
 
 ---
 
