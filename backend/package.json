@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "tsc",
-    "start": "node dist/server.js",
-    "prisma:migrate": "prisma migrate dev",
-    "prisma:generate": "prisma generate",
-    "prisma:seed": "ts-node prisma/seed.ts",
-    "lint": "eslint . --ext .ts",
-    "format": "prettier --write ."
+  "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+  "build": "tsc",
+  "start": "node dist/server.js",
+  "prisma:generate": "prisma generate",
+  "prisma:migrate": "prisma migrate deploy",
+  "prisma:seed": "ts-node prisma/seed.ts",
+  "lint": "eslint . --ext .ts",
+  "format": "prettier --write ."
   },
   "keywords": [],
   "author": "",
