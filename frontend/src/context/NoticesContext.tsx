@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, type ReactNode } from 'react';
 import type { PriorityType, PriorityLevel } from '../components/notices';
 
 export interface NoticeData {

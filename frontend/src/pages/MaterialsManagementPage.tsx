@@ -1,14 +1,13 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import DefaultLayout from '../layouts/DefaultLayout';
 import { Breadcrumb, MaterialsManagementTable } from '../components';
 import { useMaterials } from '../context/MaterialsContext';
 import styles from './MaterialsManagementPage.module.css';
 
 function MaterialsManagementPage() {
-  const navigate = useNavigate();
   const { materials, removeMaterial, updateMaterial, versionMaterial } = useMaterials();
-  const [editingMaterial, setEditingMaterial] = useState<string | null>(null);
+  const [, setEditingMaterial] = useState<string | null>(null);
 
   const getTypeLabel = (type: string): 'Slides' | 'PDF' | 'Video' => {
     switch (type) {

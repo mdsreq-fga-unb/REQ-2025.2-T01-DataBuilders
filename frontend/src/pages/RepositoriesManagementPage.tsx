@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 import DefaultLayout from '../layouts/DefaultLayout';
 import { Breadcrumb } from '../components';
 import { useRepositories, type RepositoryData } from '../context/RepositoriesContext';
@@ -17,7 +16,6 @@ interface Organization {
 }
 
 function RepositoriesManagementPage() {
-  const navigate = useNavigate();
   const { repositories, addRepository, removeRepository, updateRepository } = useRepositories();
   const [activeTab, setActiveTab] = useState<'repositories' | 'organizations'>('repositories');
   const [showAddModal, setShowAddModal] = useState(false);

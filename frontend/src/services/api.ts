@@ -1,35 +1,45 @@
-import axios from 'axios';
-import { supabase } from '../lib/supabase'; 
-
-export const api = axios.create({
-  baseURL: 'http://localhost:3000/api', 
-});
-
-api.interceptors.request.use(async (config) => {
-  const { data } = await supabase.auth.getSession();
-  
-  if (data.session?.access_token) {
-    config.headers.Authorization = `Bearer ${data.session.access_token}`;
-  }
-  
-  return config;
-});
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+const API_BASE_URL = (import.meta.env.VITE_API_URL || 'http://localhost:3000') as string;
 
 type RequestInitEx = RequestInit & { json?: unknown };
 
-function authHeader() {
+type HeadersRecord = Record<string, string>;
+
+function authHeader(): HeadersRecord {
   const token = localStorage.getItem('authToken');
   if (!token) return {};
   return { Authorization: `Bearer ${token}` };
 }
 
-async function request(path: string, init: RequestInitEx = {}) {
-  const headers: HeadersInit = {
+function normalizeHeaders(initHeaders?: HeadersInit, auth?: HeadersRecord): HeadersRecord {
+  const headers: HeadersRecord = {
     'Content-Type': 'application/json',
-    ...(init.headers || {}),
-    ...authHeader(),
   };
+
+  if (!initHeaders) {
+    if (auth && auth.Authorization) headers.Authorization = auth.Authorization;
+    return headers;
+  }
+
+  if (initHeaders instanceof Headers) {
+    initHeaders.forEach((value, key) => {
+      headers[key] = value;
+    });
+  } else if (Array.isArray(initHeaders)) {
+    for (const [k, v] of initHeaders) {
+      headers[k] = v;
+    }
+  } else {
+    Object.assign(headers, initHeaders as Record<string, string>);
+  }
+
+  if (auth && auth.Authorization) headers.Authorization = auth.Authorization;
+  return headers;
+}
+
+async function request(path: string, init: RequestInitEx = {}) {
+  const auth = authHeader();
+  const headers = normalizeHeaders(init.headers, auth);
+
   const body = init.json !== undefined ? JSON.stringify(init.json) : init.body;
   const res = await fetch(`${API_BASE_URL}${path}`, { ...init, headers, body });
   const contentType = res.headers.get('content-type') || '';

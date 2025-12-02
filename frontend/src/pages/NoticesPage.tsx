@@ -186,7 +186,7 @@ function NoticesPage() {
 
           <div className={styles.noticesList}>
             {filteredNotices.length > 0 ? (
-              filteredNotices.map((notice, index) => {
+              filteredNotices.map((notice) => {
                 const noticeIndex = notices.findIndex(n => n.id === notice.id);
                 return (
                   <NoticeCard

@@ -7,10 +7,10 @@ const r = Router();
 
 r.get('/', materialCtrl.listMaterials);
 r.get('/:id', materialCtrl.getMaterial);
-r.post('/:id/download', ensureSupabaseAuth, materialCtrl.registerDownload);
-r.post('/', ensureSupabaseAuth, materialCtrl.createMaterial);
-r.put('/:id', ensureSupabaseAuth, materialCtrl.updateMaterial);
-r.delete('/:id', ensureSupabaseAuth, materialCtrl.deleteMaterial);
-r.patch('/:id/version', ensureSupabaseAuth, materialCtrl.bumpVersion);
+r.post('/:id/download', materialCtrl.registerDownload);
+r.post('/', materialCtrl.createMaterial);
+r.put('/:id', materialCtrl.updateMaterial);
+r.delete('/:id', materialCtrl.deleteMaterial);
+r.patch('/:id/version', materialCtrl.bumpVersion);
 
 export default r;

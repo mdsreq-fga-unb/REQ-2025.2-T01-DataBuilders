@@ -1,20 +1,57 @@
+// backend/src/middlewares/auth.middleware.ts
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
-import { JWT_SECRET } from '../config';
+// import { supabase } from '../lib/supabaseServer'; // ajuste se o seu import for diferente
 
-export interface AuthRequest extends Request {
-  user?: any;
-}
+// Se seu projeto usa outro nome para a chave, ajuste aqui:
+const SUPABASE_JWT_SECRET = process.env.SUPABASE_JWT_SECRET || ''; // pode estar vazio em dev
 
-export function ensureAuth(req: AuthRequest, res: Response, next: NextFunction) {
-  const auth = req.headers.authorization;
-  if (!auth) return res.status(401).json({ message: 'No token' });
-  const [_, token] = auth.split(' ');
+export async function ensureAuth(req: Request, res: Response, next: NextFunction) {
   try {
-    const payload = jwt.verify(token, JWT_SECRET);
-    req.user = payload;
-    next();
-  } catch (err) {
-    return res.status(401).json({ message: 'Invalid token' });
+    const authHeader = (req.headers.authorization || '') as string;
+    const token = authHeader.startsWith('Bearer ') ? authHeader.slice(7) : null;
+
+    if (!token) {
+      // Ambiente de desenvolvimento: atribui usuário dev para testes locais
+      if (process.env.NODE_ENV !== 'production') {
+        // usuário DEV criado manualmente no banco
+        // @ts-ignore
+        req.user = { sub: 'DEV-ANON' };
+        return next();
+      }
+      return res.status(401).json({ message: 'No token provided' });
+    }
+
+    // validação do token real (exemplo usando jwt)
+    // se você usa supabase/jwt, ajuste conforme sua validação atual
+    if (SUPABASE_JWT_SECRET) {
+      try {
+        const payload = jwt.verify(token, SUPABASE_JWT_SECRET);
+        // @ts-ignore
+        req.user = payload;
+        return next();
+      } catch (err) {
+        return res.status(401).json({ message: 'Invalid token' });
+      }
+    }
+
+    // Se não tem secret configurado (dev), tenta decodificar sem verificacao
+    try {
+      const decoded = jwt.decode(token);
+      // @ts-ignore
+      req.user = decoded || { sub: 'DEV-ANON' };
+      return next();
+    } catch (err) {
+      if (process.env.NODE_ENV !== 'production') {
+        // fallback para ambiente dev
+        // @ts-ignore
+        req.user = { sub: 'DEV-ANON' };
+        return next();
+      }
+      return res.status(401).json({ message: 'Invalid token' });
+    }
+  } catch (error) {
+    console.error('ensureAuth error:', error);
+    return res.status(500).json({ message: 'Auth error' });
   }
 }
