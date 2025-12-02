@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import type { ReactNode } from 'react';
 import { api } from '../services/api';
 
@@ -43,9 +43,10 @@ export function MaterialsProvider({ children }: { children: ReactNode }) {
 
   const fetchMaterials = useCallback(async () => {
     try {
-      const response = await api.get('/materials');
+      const response = await api.get('/materials') as { data?: MaterialData[] } | MaterialData[];
+      const data = Array.isArray(response) ? response : (response as { data: MaterialData[] }).data || [];
       
-      const formattedData = response.data.map((item: any) => ({
+      const formattedData = data.map((item: MaterialData) => ({
         ...item,
         dateValue: new Date(item.dateValue),
       }));
@@ -62,9 +63,9 @@ export function MaterialsProvider({ children }: { children: ReactNode }) {
     fetchMaterials();
   }, [fetchMaterials]);
 
-  const addMaterial = async (materialData: any) => {
+  const addMaterial = async (materialData: Omit<MaterialData, 'id' | 'date' | 'dateValue' | 'downloads' | 'version' | 'professor'>) => {
     try {
-      const response = await api.post('/materials', materialData);
+      const response = await api.post('/materials', materialData) as { data: MaterialData };
       
       const newMaterial = {
         ...response.data,
@@ -91,7 +92,7 @@ export function MaterialsProvider({ children }: { children: ReactNode }) {
 
   const updateMaterial = async (id: string, updates: Partial<MaterialData>) => {
     try {
-      const response = await api.put(`/materials/${id}`, updates);
+      const response = await api.put(`/materials/${id}`, updates) as { data: MaterialData };
       
       const updatedItem = {
         ...response.data,
@@ -106,7 +107,7 @@ export function MaterialsProvider({ children }: { children: ReactNode }) {
 
   const versionMaterial = async (id: string) => {
     try {
-      const response = await api.patch(`/materials/${id}/version`);
+      const response = await api.patch(`/materials/${id}/version`) as { data: MaterialData };
       
       const updatedItem = {
         ...response.data,
@@ -121,7 +122,7 @@ export function MaterialsProvider({ children }: { children: ReactNode }) {
 
   const registerDownload = async (id: string) => {
     try {
-      const response = await api.post(`/materials/${id}/download`);
+      const response = await api.post(`/materials/${id}/download`) as { data: { downloads: number } };
       
       setMaterials(prev => prev.map(m => 
         m.id === id ? { ...m, downloads: response.data.downloads } : m

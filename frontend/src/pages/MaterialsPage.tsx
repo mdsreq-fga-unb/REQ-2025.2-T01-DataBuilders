@@ -31,6 +31,8 @@ function MaterialsPage() {
 
   const periodOptions = [
     { value: 'todos', label: 'Todos os períodos' },
+    { value: '2025-2', label: '2025.2' },
+    { value: '2025-1', label: '2025.1' },
     { value: '2024-2', label: '2024.2' },
     { value: '2024-1', label: '2024.1' },
     { value: '2023-2', label: '2023.2' }
@@ -47,6 +49,7 @@ function MaterialsPage() {
   const allMaterials = materials
     .filter(material => material.status === 'Publicado')
     .map(material => ({
+      id: material.id,
       type: material.type,
       title: material.title,
       description: material.description,
@@ -230,9 +233,10 @@ function MaterialsPage() {
           <div className="row g-4 mt-4">
             {filteredAndSortedMaterials.length > 0 ? (
               filteredAndSortedMaterials.map((material, index) => (
-                <div key={index} className="col-12 col-md-6 col-lg-4">
+                <div key={material.id} className="col-12 col-md-6 col-lg-4">
                   <MaterialCard
                     {...material}
+                    id={material.id}
                     onToggleFavorite={() => handleToggleFavorite(index)}
                   />
                 </div>

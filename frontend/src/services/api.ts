@@ -1,34 +1,22 @@
-import axios from 'axios';
-import { supabase } from '../lib/supabase'; 
+import { supabase } from '../lib/supabase';
 
-export const api = axios.create({
-  baseURL: 'http://localhost:3000/api', 
-});
-
-api.interceptors.request.use(async (config) => {
-  const { data } = await supabase.auth.getSession();
-  
-  if (data.session?.access_token) {
-    config.headers.Authorization = `Bearer ${data.session.access_token}`;
-  }
-  
-  return config;
-});
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
 
 type RequestInitEx = RequestInit & { json?: unknown };
 
-function authHeader() {
-  const token = localStorage.getItem('authToken');
-  if (!token) return {};
-  return { Authorization: `Bearer ${token}` };
+async function authHeader(): Promise<Record<string, string>> {
+  const { data } = await supabase.auth.getSession();
+  if (data.session?.access_token) {
+    return { Authorization: `Bearer ${data.session.access_token}` };
+  }
+  return {};
 }
 
 async function request(path: string, init: RequestInitEx = {}) {
   const headers: HeadersInit = {
     'Content-Type': 'application/json',
     ...(init.headers || {}),
-    ...authHeader(),
+    ...(await authHeader()),
   };
   const body = init.json !== undefined ? JSON.stringify(init.json) : init.body;
   const res = await fetch(`${API_BASE_URL}${path}`, { ...init, headers, body });
@@ -51,6 +39,7 @@ export const api = {
   get: (path: string) => request(path, { method: 'GET' }),
   post: (path: string, json?: unknown) => request(path, { method: 'POST', json }),
   put: (path: string, json?: unknown) => request(path, { method: 'PUT', json }),
+  patch: (path: string, json?: unknown) => request(path, { method: 'PATCH', json }),
   delete: (path: string) => request(path, { method: 'DELETE' }),
 };
 

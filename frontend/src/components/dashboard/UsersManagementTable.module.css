@@ -167,6 +167,14 @@
   color: #b91c1c;
 }
 
+.actionLink.deleteLink {
+  color: #dc2626;
+}
+
+.actionLink.deleteLink:hover {
+  color: #b91c1c;
+}
+
 @media (max-width: 767px) {
   .tableHeader {
     flex-direction: column;

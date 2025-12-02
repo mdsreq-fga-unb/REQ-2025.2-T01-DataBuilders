@@ -84,15 +84,66 @@
   flex-wrap: wrap;
 }
 
-.clearFilters {
-  text-align: right;
+.filterWrapper {
+  width: auto;
+  min-width: 150px;
 }
 
-@media (max-width: 767.98px) {
-  .clearFilters {
-    text-align: left;
-    margin-top: 1rem;
-  }
+.filtersSection :global(.filterContainer) {
+  gap: 0;
+  width: auto;
+}
+
+.filtersSection :global(.filterLabel) {
+  display: none;
+}
+
+.filtersSection :global(.filterSelect) {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  width: auto;
+  min-width: 150px;
+  min-height: auto;
+  line-height: 1.4;
+}
+
+.checkboxWrapper {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  min-height: 38px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  cursor: pointer;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+}
+
+.checkboxLabel:hover {
+  color: #084298;
+}
+
+.checkbox {
+  width: 1.125rem;
+  height: 1.125rem;
+  cursor: pointer;
+  accent-color: #084298;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+}
+
+.clearFilters {
+  text-align: center;
+  margin-top: 1rem;
 }
 
 .clearFiltersLink {
@@ -126,5 +177,24 @@
 .noResults p {
   font-size: 1.125rem;
   margin: 0;
+}
+
+.loadingMessage,
+.errorMessage {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.9375rem;
+  text-align: center;
+}
+
+.loadingMessage {
+  background-color: #eff6ff;
+  color: #084298;
+}
+
+.errorMessage {
+  background-color: #fee2e2;
+  color: #dc2626;
 }
 

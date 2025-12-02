@@ -60,10 +60,15 @@
 .newButton {
   background-color: #1e40af;
   color: #ffffff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .newButton:hover {
   background-color: #1e3a8a;
+  color: #ffffff;
 }
 
 .tableContainer {

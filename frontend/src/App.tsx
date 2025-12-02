@@ -6,7 +6,8 @@ import {
   HomePage, 
   MaterialsPage, 
   RepositoriesPage, 
-  NoticesPage, 
+  NoticesPage,
+  NoticeDetailPage,
   ProfilePage, 
   DashboardPage,
   LoginPage,
@@ -30,6 +31,7 @@ function App() {
               <Route path="/repositorios" element={<RepositoriesPage />} />
               <Route path="/repositorios/gerenciar" element={<RepositoriesManagementPage />} />
               <Route path="/avisos" element={<NoticesPage />} />
+              <Route path="/avisos/:id" element={<NoticeDetailPage />} />
               <Route path="/avisos/novo" element={<CreateNoticePage />} />
               <Route path="/perfil" element={<ProfilePage />} />
               <Route path="/dashboard" element={<DashboardPage />} />

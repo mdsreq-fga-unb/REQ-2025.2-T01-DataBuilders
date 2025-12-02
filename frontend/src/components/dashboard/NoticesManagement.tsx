@@ -3,7 +3,7 @@ import styles from './NoticesManagement.module.css';
 
 interface Notice {
   id: string;
-  priority: 'Urgente' | 'Info' | 'Sucesso';
+  priority: 'Urgente' | 'Importante' | 'Info' | 'Geral';
   title: string;
   description: string;
   publishedAt: string;
@@ -14,9 +14,10 @@ interface NoticesManagementProps {
   notices: Notice[];
   onEdit: (id: string) => void;
   onDelete: (id: string) => void;
+  onNew?: () => void;
 }
 
-function NoticesManagement({ notices, onEdit, onDelete }: NoticesManagementProps) {
+function NoticesManagement({ notices, onEdit, onDelete, onNew }: NoticesManagementProps) {
   return (
     <div className={styles.noticesManagement}>
       <div className={styles.header}>
@@ -26,13 +27,15 @@ function NoticesManagement({ notices, onEdit, onDelete }: NoticesManagementProps
             Criar, editar e deletar avisos para os alunos
           </p>
         </div>
-        <button className={styles.newButton}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <line x1="12" y1="5" x2="12" y2="19" />
-            <line x1="5" y1="12" x2="19" y2="12" />
-          </svg>
-          Novo Aviso
-        </button>
+        {onNew && (
+          <button className={styles.newButton} onClick={onNew}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <line x1="12" y1="5" x2="12" y2="19" />
+              <line x1="5" y1="12" x2="19" y2="12" />
+            </svg>
+            Novo Aviso
+          </button>
+        )}
       </div>
 
       <div className="row g-4">

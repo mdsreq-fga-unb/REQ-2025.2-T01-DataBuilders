@@ -1,34 +1,26 @@
-import { Link } from 'react-router-dom';
 import NoticePriorityBadge, { type PriorityType } from './NoticePriorityBadge';
-import NoticePriorityTag, { type PriorityLevel } from './NoticePriorityTag';
 import styles from './NoticeCard.module.css';
 
 interface NoticeCardProps {
   priorityType: PriorityType;
-  priorityLevel: PriorityLevel;
   title: string;
   description: string;
   author: string;
   date: string;
   time: string;
-  onMarkAsRead?: () => void;
   onEdit?: () => void;
   onDelete?: () => void;
-  detailsUrl?: string;
 }
 
 function NoticeCard({
   priorityType,
-  priorityLevel,
   title,
   description,
   author,
   date,
   time,
-  onMarkAsRead,
   onEdit,
-  onDelete,
-  detailsUrl = '#'
+  onDelete
 }: NoticeCardProps) {
   return (
     <div className={`${styles.card} ${styles[priorityType]}`}>
@@ -85,21 +77,6 @@ function NoticeCard({
           <span className={styles.separator}>•</span>
           <span className={styles.date}>{date} - {time}</span>
         </div>
-        <div className={styles.footerRight}>
-          <NoticePriorityTag level={priorityLevel} />
-        </div>
-      </div>
-
-      <div className={styles.actions}>
-        <Link to={detailsUrl} className={styles.primaryButton}>
-          Ver Detalhes
-        </Link>
-        <button 
-          className={styles.secondaryButton}
-          onClick={onMarkAsRead}
-        >
-          Marcar como Lido
-        </button>
       </div>
     </div>
   );

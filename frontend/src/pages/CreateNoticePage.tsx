@@ -43,6 +43,8 @@ function CreateNoticePage() {
 
   const periodOptions = [
     { value: '', label: 'Selecione um período' },
+    { value: '2025-2', label: '2025.2' },
+    { value: '2025-1', label: '2025.1' },
     { value: '2024-2', label: '2024.2' },
     { value: '2024-1', label: '2024.1' },
     { value: '2023-2', label: '2023.2' }

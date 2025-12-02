@@ -76,7 +76,7 @@
 
 .cardFooter {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin-bottom: 0.75rem;
   flex-wrap: wrap;

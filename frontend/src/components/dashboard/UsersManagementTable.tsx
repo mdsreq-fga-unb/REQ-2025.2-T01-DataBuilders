@@ -18,6 +18,8 @@ interface UsersManagementTableProps {
   onPermissions: (id: string) => void;
   onActivate: (id: string) => void;
   onDeactivate: (id: string) => void;
+  onDelete?: (id: string) => void;
+  onNew?: () => void;
 }
 
 function UsersManagementTable({
@@ -25,7 +27,9 @@ function UsersManagementTable({
   onEdit,
   onPermissions,
   onActivate,
-  onDeactivate
+  onDeactivate,
+  onDelete,
+  onNew
 }: UsersManagementTableProps) {
   const getTypeColor = (type: string) => {
     switch (type) {
@@ -62,13 +66,15 @@ function UsersManagementTable({
             Criar e editar permissões de usuários
           </p>
         </div>
-        <button className={styles.newButton}>
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-            <circle cx="12" cy="7" r="4" />
-          </svg>
-          Novo Usuário
-        </button>
+        {onNew && (
+          <button className={styles.newButton} onClick={onNew}>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
+            </svg>
+            Novo Usuário
+          </button>
+        )}
       </div>
 
       <div className={styles.tableContainer}>
@@ -144,12 +150,20 @@ function UsersManagementTable({
                         Desativar
                       </button>
                     )}
-                    {user.status === 'Pendente' && (
+                    {(user.status === 'Pendente' || user.status === 'Inativo') && (
                       <button
                         className={`${styles.actionLink} ${styles.activateLink}`}
                         onClick={() => onActivate(user.id)}
                       >
                         Ativar
+                      </button>
+                    )}
+                    {onDelete && (
+                      <button
+                        className={`${styles.actionLink} ${styles.deleteLink}`}
+                        onClick={() => onDelete(user.id)}
+                      >
+                        Deletar
                       </button>
                     )}
                   </div>

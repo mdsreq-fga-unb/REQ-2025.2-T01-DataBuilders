@@ -65,7 +65,7 @@ function ProfilePage() {
           <circle cx="12" cy="7" r="4" />
         </svg>
       ),
-      value: '156',
+      value: '0',
       label: 'Alunos Ativos',
       accentColor: '#16a34a',
       iconBackground: '#dcfce7'

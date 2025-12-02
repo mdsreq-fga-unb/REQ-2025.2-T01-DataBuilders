@@ -19,6 +19,9 @@ function Header() {
               <Link to="/avisos" className={styles.navLink}>
                 Avisos
               </Link>
+              <Link to="/dashboard" className={styles.navLink}>
+                Dashboard
+              </Link>
               <Link to="/perfil" className={styles.navLink}>
                 Perfil
               </Link>

@@ -36,6 +36,8 @@ function CreateContentPage() {
 
   const periodOptions = [
     { value: '', label: 'Selecione um período' },
+    { value: '2025-2', label: '2025.2' },
+    { value: '2025-1', label: '2025.1' },
     { value: '2024-2', label: '2024.2' },
     { value: '2024-1', label: '2024.1' },
     { value: '2023-2', label: '2023.2' },
@@ -108,11 +110,6 @@ function CreateContentPage() {
         type: formData.type,
         title: formData.title,
         description: formData.description,
-        professor: 'Prof. Maurício Serrano',
-        date: new Date().toLocaleDateString('pt-BR'),
-        dateValue: new Date(),
-        downloads: 0,
-        version: formData.version,
         isFavorite: false,
         additionalInfo: formData.additionalInfo || undefined,
         actionButtonText: formData.type === 'video' ? 'Assistir' : formData.type === 'codigo' ? 'Ver Código' : 'Visualizar',
@@ -120,7 +117,8 @@ function CreateContentPage() {
         topic: formData.topic,
         period: formData.period,
         status: formData.isPublic ? 'Publicado' : 'Rascunho',
-        updatedAt: 'agora'
+        updatedAt: 'agora',
+        contentUrl: formData.file ? URL.createObjectURL(formData.file) : undefined
       });
       
       // Redirecionar para a página de materiais após sucesso
