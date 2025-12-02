@@ -59,12 +59,12 @@ model Material {
   isFavorite  Boolean        @default(false)
   additionalInfo String?    
   authorId    String
-  deleted     Boolean        @default(false) 
-  createdAt   DateTime       @default(now())
-  updatedAt   DateTime       @updatedAt
+  author      User      @relation("authorMaterials", fields: [authorId], references: [id])
+  deleted     Boolean   @default(false) 
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
   versions    Version[]
   @@map("materials")
-  users User[] @relation("authorMaterials")
 }
 
 model Version {

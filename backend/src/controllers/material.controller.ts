@@ -2,8 +2,9 @@ import { Request, Response } from 'express';
 import { MaterialService } from '../services/material.service';
 
 const service = new MaterialService();
-
 const formatMaterialForFrontend = (m: any) => {
+  if (!m) return m;
+  const createdAt = m.createdAt ? new Date(m.createdAt) : null;
   let actionButtonText = "Visualizar";
   if (m.type === "video") actionButtonText = "Assistir";
   if (m.type === "codigo") actionButtonText = "Ver Código";
@@ -11,11 +12,11 @@ const formatMaterialForFrontend = (m: any) => {
 
   return {
     ...m,
-    date: m.createdAt.toLocaleDateString('pt-BR'), 
-    dateValue: m.createdAt,
+    date: createdAt ? createdAt.toLocaleDateString('pt-BR') : null,
+    dateValue: createdAt,
     actionButtonText,
     actionButtonLink: m.contentUrl,
-    professor: "Prof. Mauricio Serrano" 
+    professor: m?.author?.name ?? "Prof. Mauricio Serrano"
   };
 };
 
@@ -39,14 +40,16 @@ export async function createMaterial(req: Request, res: Response) {
 
 export async function listMaterials(req: Request, res: Response) {
   try {
+    console.log('[DEBUG] listMaterials called');
     const materials = await service.findAll();
+    console.log('[DEBUG] materials count:', materials?.length);
     const formatted = materials.map(formatMaterialForFrontend);
     res.json(formatted);
   } catch (error) {
-    res.status(500).json({ message: 'Error listing materials' });
+    console.error('[ERROR] listMaterials failed:', error);
+    res.status(500).json({ message: 'Error listing materials', error: String(error) });
   }
 }
-
 export async function getMaterial(req: Request, res: Response) {
   try {
     const { id } = req.params;
