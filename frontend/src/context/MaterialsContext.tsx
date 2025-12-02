@@ -1,6 +1,8 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useState, useEffect, type ReactNode, useCallback } from 'react';
+import { api } from '../services/api'; // Importe o arquivo criado acima
+// import { toast } from 'sonner'; 
 
-export type MaterialType = 'slides' | 'video' | 'pdf' | 'codigo' | 'material complementar' | 'plano de ensino' | 'lista' | 'livros';
+export type MaterialType = 'slides' | 'video' | 'pdf' | 'codigo';
 
 export interface MaterialData {
   id: string;
@@ -8,8 +10,8 @@ export interface MaterialData {
   title: string;
   description: string;
   professor: string;
-  date: string;
-  dateValue: Date;
+  date: string;       
+  dateValue: Date;    
   downloads: number;
   version: string;
   isFavorite: boolean;
@@ -20,145 +22,125 @@ export interface MaterialData {
   period?: string;
   status?: 'Publicado' | 'Rascunho';
   updatedAt?: string;
+  contentUrl?: string; 
 }
 
 interface MaterialsContextType {
   materials: MaterialData[];
-  addMaterial: (material: Omit<MaterialData, 'id'>) => void;
-  removeMaterial: (id: string) => void;
-  updateMaterial: (id: string, material: Partial<MaterialData>) => void;
-  versionMaterial: (id: string) => void;
+  isLoading: boolean;
+  addMaterial: (material: Omit<MaterialData, 'id' | 'date' | 'dateValue' | 'downloads' | 'version' | 'professor'>) => Promise<void>;
+  removeMaterial: (id: string) => Promise<void>;
+  updateMaterial: (id: string, material: Partial<MaterialData>) => Promise<void>;
+  versionMaterial: (id: string) => Promise<void>;
+  registerDownload: (id: string) => Promise<void>;
 }
 
 const MaterialsContext = createContext<MaterialsContextType | undefined>(undefined);
 
 export function MaterialsProvider({ children }: { children: ReactNode }) {
-  const [materials, setMaterials] = useState<MaterialData[]>([
-    {
-      id: '1',
-      type: 'slides',
-      title: 'Árvores AVL - Conceitos e Implementação',
-      description: 'Slides completos sobre árvores AVL, incluindo operações de inserção, remoção e balanceamento automático.',
-      professor: 'Prof. Mauricio Serrano',
-      date: '10/12/2024',
-      dateValue: new Date('2024-12-10'),
-      downloads: 156,
-      version: 'v2.1',
-      isFavorite: false,
-      topic: 'arvores',
-      period: '2024-2',
-      status: 'Publicado',
-      updatedAt: 'há 2 horas'
-    },
-    {
-      id: '2',
-      type: 'video',
-      title: 'Algoritmo de Dijkstra - Aula Prática',
-      description: 'Videoaula demonstrando a implementação e execução do algoritmo de Dijkstra para encontrar caminhos mínimos.',
-      professor: 'Prof. Maurício Serrano',
-      date: '08/12/2024',
-      dateValue: new Date('2024-12-08'),
-      downloads: 89,
-      version: 'v1.0',
-      isFavorite: true,
-      additionalInfo: '45min',
-      actionButtonText: 'Assistir',
-      topic: 'grafos',
-      period: '2024-2',
-      status: 'Publicado',
-      updatedAt: 'há 3 dias'
-    },
-    {
-      id: '3',
-      type: 'pdf',
-      title: 'Tabelas Hash - Teoria e Aplicações',
-      description: 'Apostila completa sobre estruturas de hash, funções de dispersão e métodos de resolução de colisões.',
-      professor: 'Prof. Mauricio Serrano',
-      date: '05/12/2024',
-      dateValue: new Date('2024-12-05'),
-      downloads: 203,
-      version: 'v1.2',
-      isFavorite: false,
-      additionalInfo: '24 páginas',
-      topic: 'hash',
-      period: '2024-2',
-      status: 'Publicado',
-      updatedAt: 'há 5 dias'
-    },
-    {
-      id: '4',
-      type: 'codigo',
-      title: 'Implementações de QuickSort',
-      description: 'Código fonte completo do QuickSort em Python, Java e C++ com análise de complexidade e otimizações.',
-      professor: 'Prof. Maurício Serrano',
-      date: '03/12/2024',
-      dateValue: new Date('2024-12-03'),
-      downloads: 134,
-      version: 'v1.1',
-      isFavorite: true,
-      additionalInfo: '3 linguagens',
-      actionButtonText: 'Ver Código',
-      topic: 'ordenacao',
-      period: '2024-2',
-      status: 'Rascunho',
-      updatedAt: 'ontem'
+  const [materials, setMaterials] = useState<MaterialData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchMaterials = useCallback(async () => {
+    try {
+      const response = await api.get('/materials');
+      
+      const formattedData = response.data.map((item: any) => ({
+        ...item,
+        dateValue: new Date(item.dateValue),
+      }));
+
+      setMaterials(formattedData);
+    } catch (error) {
+      console.error("Erro ao buscar materiais:", error);
+    } finally {
+      setIsLoading(false);
     }
-  ]);
+  }, []);
 
-  const addMaterial = (material: Omit<MaterialData, 'id'>) => {
-    const newMaterial: MaterialData = {
-      ...material,
-      id: Date.now().toString(),
-      date: new Date().toLocaleDateString('pt-BR'),
-      dateValue: new Date(),
-      downloads: 0,
-      isFavorite: false,
-      status: material.status || 'Publicado',
-      updatedAt: 'agora'
-    };
-    setMaterials(prev => [...prev, newMaterial]);
+  useEffect(() => {
+    fetchMaterials();
+  }, [fetchMaterials]);
+
+  const addMaterial = async (materialData: any) => {
+    try {
+      const response = await api.post('/materials', materialData);
+      
+      const newMaterial = {
+        ...response.data,
+        dateValue: new Date(response.data.dateValue)
+      };
+
+      setMaterials(prev => [newMaterial, ...prev]);
+    } catch (error) {
+      console.error("Erro ao criar:", error);
+      throw error;
+    }
   };
 
-  const removeMaterial = (id: string) => {
-    setMaterials(prev => prev.filter(material => material.id !== id));
+  const removeMaterial = async (id: string) => {
+    try {
+      setMaterials(prev => prev.filter(m => m.id !== id));
+      
+      await api.delete(`/materials/${id}`);
+    } catch (error) {
+      console.error("Erro ao remover:", error);
+      fetchMaterials(); 
+    }
   };
 
-  const updateMaterial = (id: string, updates: Partial<MaterialData>) => {
-    setMaterials(prev =>
-      prev.map(material => 
-        material.id === id 
-          ? { ...material, ...updates, updatedAt: 'agora' }
-          : material
-      )
-    );
+  const updateMaterial = async (id: string, updates: Partial<MaterialData>) => {
+    try {
+      const response = await api.put(`/materials/${id}`, updates);
+      
+      const updatedItem = {
+        ...response.data,
+        dateValue: new Date(response.data.dateValue)
+      };
+
+      setMaterials(prev => prev.map(m => m.id === id ? updatedItem : m));
+    } catch (error) {
+      console.error("Erro ao atualizar:", error);
+    }
   };
 
-  const versionMaterial = (id: string) => {
-    setMaterials(prev =>
-      prev.map(material => {
-        if (material.id === id) {
-          const currentVersion = material.version;
-          const versionMatch = currentVersion.match(/v(\d+)\.(\d+)/);
-          if (versionMatch) {
-            const major = parseInt(versionMatch[1]);
-            const minor = parseInt(versionMatch[2]) + 1;
-            return {
-              ...material,
-              version: `v${major}.${minor}`,
-              updatedAt: 'agora',
-              date: new Date().toLocaleDateString('pt-BR'),
-              dateValue: new Date()
-            };
-          }
-          return { ...material, version: 'v1.1', updatedAt: 'agora' };
-        }
-        return material;
-      })
-    );
+  const versionMaterial = async (id: string) => {
+    try {
+      const response = await api.patch(`/materials/${id}/version`);
+      
+      const updatedItem = {
+        ...response.data,
+        dateValue: new Date(response.data.dateValue)
+      };
+
+      setMaterials(prev => prev.map(m => m.id === id ? updatedItem : m));
+    } catch (error) {
+      console.error("Erro ao versionar:", error);
+    }
+  };
+
+  const registerDownload = async (id: string) => {
+    try {
+      const response = await api.post(`/materials/${id}/download`);
+      
+      setMaterials(prev => prev.map(m => 
+        m.id === id ? { ...m, downloads: response.data.downloads } : m
+      ));
+    } catch (error) {
+      console.error("Erro ao registrar download", error);
+    }
   };
 
   return (
-    <MaterialsContext.Provider value={{ materials, addMaterial, removeMaterial, updateMaterial, versionMaterial }}>
+    <MaterialsContext.Provider value={{ 
+      materials, 
+      isLoading, 
+      addMaterial, 
+      removeMaterial, 
+      updateMaterial, 
+      versionMaterial,
+      registerDownload 
+    }}>
       {children}
     </MaterialsContext.Provider>
   );
@@ -171,4 +153,3 @@ export function useMaterials() {
   }
   return context;
 }
-
