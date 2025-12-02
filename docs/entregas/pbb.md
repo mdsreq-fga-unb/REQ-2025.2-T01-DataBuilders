@@ -2,7 +2,7 @@
 
 # Product Backlog Building (PBB)
 
-## 1. O que é PBB?
+## 1. PBB
 
 O **Product Backlog Building (PBB)** é uma metodologia que auxilia equipes na construção colaborativa do backlog do produto, conectando **processos**, **regras de negócio** e **experiências dos usuários** em uma visão integrada.  
 Diferente da simples listagem de tarefas, o PBB organiza o backlog com base em **fluxos de valor**, permitindo identificar gaps, entender expectativas das personas e transformar necessidades reais em **histórias de usuário claras e priorizadas**.
@@ -11,7 +11,7 @@ Ele é especialmente útil em ambientes complexos, como ecossistemas de inovaç�
 
 ---
 
-## 2. Problema que o PBB irá resolver
+## 2. Contexto
 
 Com base no estudo de caso da **InovaHub**, o ecossistema nacional de inovação enfrenta desafios decorrentes da **fragmentação de informações** e da ausência de uma plataforma integrada. Entre os principais problemas identificados estão:
 
@@ -34,13 +34,15 @@ A proposta do PBB é **estruturar e entender esses fluxos**, identificando funci
 
 ---
 
-## 3. Estrutura visual do PBB
+## 3. Canvas PBB
 
 ![pbb-image](pbb.png)
 
+Disponível em: https://miro.com/app/board/uXjVJDF_XEY=/?moveToWidget=3458764647714443252&cot=14
+
 ---
 
-## 4. User Stories, Critérios de Aceitação e BDD — InovaHub
+## 4. User Stories, Critérios de Aceitação e BDD 
 
 ---
 
