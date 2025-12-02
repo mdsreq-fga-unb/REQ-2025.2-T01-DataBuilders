@@ -18,7 +18,7 @@ O USM ajuda as equipes a:
 
 ---
 
-## 2. Contexto — HealthConnect (Problema que o USM resolve)
+## 2. Contexto 
 
 A HealthConnect é uma rede de clínicas e hospitais distribuídos pelo Brasil.  
 Mesmo com grande atuação, seus processos digitais são **fragmentados**, redundantes e frágeis — prejudicando **pacientes, médicos, recepcionistas, farmácias, agendamento e gestão clínica**.
@@ -62,11 +62,11 @@ Os problemas principais incluem:
 ## 3. User Story Mapping (USM)
 
 ![usm_image](usm.png)
-Disponível em: https://miro.com/app/board/uXjVJDF_XEY=/?moveToWidget=3458764647793097261&cot=14
+[Acessar USM no Miro](https://miro.com/app/board/uXjVJDF_XEY=/?moveToWidget=3458764647793097261&cot=14)
 
 ---
 
-# User Stories — HealthConnect (USM)
+# User Stories 
 
 ---
 

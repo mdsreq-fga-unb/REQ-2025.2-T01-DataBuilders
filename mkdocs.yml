@@ -60,13 +60,15 @@ nav:
     - Referências Bibliográficas: visao_produto/referencias.md
 
   - Entregas: 
-    - Unidade 1: entregas/unidade1.md
-    - Unidade 2: entregas/unidade2.md
+    - Unidade 1: 
+      - Vídeo: entregas/unidade1.md
+    - Unidade 2: 
+      -Vídeo: entregas/unidade2.md
     - Unidade 3: 
-        - Entrega 3: entregas/unidade3.md
-        - Product Backlog Building: entregas/pbb.md
-        - User Story Mapping: entregas/usm.md
-        - Casos de uso: entregas/uc.md
+      - Vídeo: entregas/unidade3.md
+      - Product Backlog Building: entregas/pbb.md
+      - User Story Mapping: entregas/usm.md
+      - Casos de uso: entregas/uc.md
 
 markdown_extensions:
 
