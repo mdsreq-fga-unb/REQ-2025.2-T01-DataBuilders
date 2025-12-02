@@ -9,7 +9,6 @@ No projeto, considera-se que um requisito está “pronto” quando:
 - O requisito está **representado no protótipo**;
 - O **protótipo foi validado e aprovado pelo cliente**, garantindo alinhamento com as expectativas.
 
----
 
 ## Definition of Done (DoD)
 
