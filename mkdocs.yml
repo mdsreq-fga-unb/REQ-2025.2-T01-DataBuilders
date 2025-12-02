@@ -55,7 +55,7 @@ nav:
     - Casos de Uso: docs/engenharia_de_requisitos/modelagem/casos-de-uso.md
     - Matriz de Rastreabilidade: docs/engenharia_de_requisitos/matriz-rastreabilidade.md
     - Product Backlog: visao_produto/product_backlog.md
-    - Product Backlog Building: visao_produto/pbb.md
+    - Canvas PBB: visao_produto/pbb.md
     - Protótipo: visao_produto/prototipo.md
     - Lições Aprendidas: visao_produto/licoes.md
     - Referências Bibliográficas: visao_produto/referencias.md
