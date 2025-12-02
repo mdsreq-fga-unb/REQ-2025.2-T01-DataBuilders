@@ -22,22 +22,24 @@ Nota-se que os objetivos específicos foram previamente listados na página "Sol
 | OE3                 | US01 |  RF01 | Buscar Repositórios do GitHub | **Must Have**   | ✅   |
 | OE2                 | US02 |  RF02 | Consultar Materiais de Aula   | **Must Have**   | ✅   |
 | OE1                 | US03 |  RF03 | Autenticar Usuários           | **Must Have**   | ✅   |
-| OE1                 | US04 |  RF04 | Gerenciar Contas de Usuários  | **Should Have** | ✅   |
-| OE2                 | US05 |  RF05 | Publicar Materiais de Aula    | **Must Have**   | ✅   |
-| OE2                 | US06 |  RF06 | Editar Materiais de Aula      | **Must Have**   | ✅   |
-| OE2                 | US07 |  RF07 | Deletar Materiais de Aula     | **Must Have**   | ✅   |
-| OE2                 | US08 |  RF08 | Versionar Conteúdo            | **Should Have** |     |
-| OE1                 | US09 |  RF09 | Favoritar Repositórios        | **Should Have** |     |
-| OE3                 | US10 |  RF10 | Publicar Avisos               | **Could Have**  |     |
-| OE3                 | US11 |  RF11 | Editar Avisos                 | **Could Have**  |     |
-| OE3                 | US12 |  RF12 | Deletar Avisos                | **Could Have**  |     |
+| OE1                 | US04 |  RF04 | Criar Contas de Usuários      | **Should Have** | ✅   |
+| OE1                 | US05 |  RF05 | Editar Contas de Usuários     | **Should Have** | ✅   |
+| OE1                 | US06 |  RF06 | Deletar Contas de Usuários    | **Should Have** | ✅   |
+| OE2                 | US07 |  RF07 | Publicar Materiais de Aula    | **Must Have**   | ✅   |
+| OE2                 | US08 |  RF08 | Editar Materiais de Aula      | **Must Have**   | ✅   |
+| OE2                 | US09 |  RF09 | Deletar Materiais de Aula     | **Must Have**   | ✅   |
+| OE2                 | US10 |  RF10 | Versionar Conteúdo            | **Should Have** |     |
+| OE1                 | US11 |  RF11 | Favoritar Repositórios        | **Should Have** |     |
+| OE3                 | US12 |  RF12 | Publicar Avisos               | **Could Have**  |     |
+| OE3                 | US13 |  RF13 | Editar Avisos                 | **Could Have**  |     |
+| OE3                 | US14 |  RF14 | Deletar Avisos                | **Could Have**  |     |
 | —                   | —    |  —    | (nenhuma descartada ainda)    | **Won’t Have**  |     |
 
 ---
 
 ### Complexidade
 
-Para auxiliar na construção da tabela MoSCoW, foi estabelecido uma matriz de complexidade no [**Figma**](https://www.figma.com/board/Kw9DsJ4TlWcCwdi1I62q7I/Sem-t%C3%ADtulo?node-id=0-1&t=RC2qap7qIVX463fv-1), aonde a equipe debateu sobre o conhecimento dos membros acerca das tecnlogias utilizadas e das funcionalidades a serem implementadas.
+Para auxiliar na construção da tabela MoSCoW, foi estabelecido uma matriz de complexidade no [**Figma**](https://www.figma.com/board/Kw9DsJ4TlWcCwdi1I62q7I/Sem-t%C3%ADtulo?node-id=0-1&t=RC2qap7qIVX463fv-1), aonde a equipe debateu sobre o conhecimento dos membros acerca das tecnlogias utilizadas e das funcionalidades a serem implementadas. Desse debate, surgiu a ideia de "alta complexidade" e "baixa complexidade". "Alta complexidade" é uma feature cuja implementação e tecnologias associadas ou não são de conhecimento prévio da equipe de desenvolviemnto ou são consideradas trabalhosas (três dias ou mais de produção). "Baixa complexidade" é oposto, são de implementação e tecnologia conhecida, podendo rapidamente ser produzidas (em torno de um dia).
 
 ---
 
