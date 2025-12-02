@@ -4,7 +4,10 @@ type LoginResponse = { token: string; user: { id: string; name: string; email: s
 
 export async function login(email: string, password: string): Promise<LoginResponse> {
   const data = await api.post('/auth/login', { email, password });
-  if (data?.token) localStorage.setItem('authToken', data.token);
+  const maybeToken = (data as any)?.token ?? (data as any)?.access_token ?? (data as any)?.session?.access_token ?? null;
+  if (maybeToken) {
+  localStorage.setItem('authToken', maybeToken);
+}
   return data as LoginResponse;
 }
 

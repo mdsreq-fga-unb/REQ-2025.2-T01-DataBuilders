@@ -60,7 +60,7 @@ function HomePage() {
           }
         };
 
-        const formatTime = (date: Date, time: string) => {
+        const formatTime = (date: Date) => {
           const now = new Date();
           const diff = now.getTime() - date.getTime();
           const hours = Math.floor(diff / (1000 * 60 * 60));
@@ -130,7 +130,7 @@ function HomePage() {
           type: getType(notice.priorityType),
           title: notice.title,
           description: notice.description,
-          publishedTime: formatTime(notice.dateValue, notice.time),
+          publishedTime: formatTime(notice.dateValue),
           author: notice.author,
           icon: getIcon(notice.priorityType)
         };
