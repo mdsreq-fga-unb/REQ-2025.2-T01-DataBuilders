@@ -13,31 +13,37 @@ Permitir que usuários consultem os materiais de aula do professor para seus est
 ### RF03 - Autenticar usuários
 Fornecer tela de login para administradores/professores e monitores, com suporte a logout e diferentes permissões de acesso (papéis).
 
-### RF04 - Gerenciar contas de usuários
-Permitir que administrador/professor crie contas para monitores via interface administrativa, desative (soft delete) e altere as permissões dos monitores.
+### RF04 - Criar contas de usuários
+Permitir que administrador/professor crie contas para monitores.
 
-### RF05 - Publicar materiais de aula
+### RF05 - Editar contas de usuários
+Permitir que administrador/professor edite contas e altere permissões de monitores.
+
+### RF06 - Deletar contas de usuários
+Permitir que administrador/professor desative contas para monitores.
+
+### RF07 - Publicar materiais de aula
 Permitir que administrador/professor e monitores possam criar e postar itens de conteúdo.
 
-### RF06 - Editar materiais de aula
+### RF08 - Editar materiais de aula
 Permitir que administrador/professor e monitores possam editar os itens de conteúdo.
 
-### RF07 - Deletar materiais de aula
+### RF09 - Deletar materiais de aula
 Permitir que administrador/professor e monitores possam deletar os itens de conteúdo.
 
-### RF08 - Versionar conteúdo
+### RF10 - Versionar conteúdo
 Manter um histórico de versões do conteúdo (quem alterou, o que foi alterado e quando), com interface para visualização e reversão de versões.
 
-### RF09 - Favoritar repositórios
+### RF11 - Favoritar repositórios
 Permitir ao usuário salvar uma referência a um repositório do GitHub no sistema, incluindo os metadados essenciais.
 
-### RF10 - Publicar avisos
+### RF12 - Publicar avisos
 Permitir que administrador/professor e monitores possam criar e postar avisos.
 
-### RF11 - Editar avisos
+### RF13 - Editar avisos
 Permitir que administrador/professor e monitores possam editar avisos.
 
-### RF12 - Deletar avisos
+### RF14 - Deletar avisos
 Permitir que administrador/professor e monitores possam deletar avisos.
 
 

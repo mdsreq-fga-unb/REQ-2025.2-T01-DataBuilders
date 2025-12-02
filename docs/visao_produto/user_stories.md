@@ -31,32 +31,36 @@
 ---
 
 ### US04 - Gerenciar contas de usuários
-**Como** um professor administrador, **eu quero** criar e gerenciar contas para monitores **para que** eu possa delegar responsabilidades e controlar o acesso ao sistema.
-
-**Critérios de Aceitação:**
-- Posso criar novas contas para monitores
-- Posso desativar contas (soft delete)
-- Posso alterar permissões dos monitores
-- Tenho interface administrativa para essas operações
+**Como** um professor administrador, **eu quero** criar contas para monitores **para que** eu possa delegar responsabilidades.
 
 ---
 
-### US05 - Publicar materiais de aula
+### US05 - Editar contas de usuários
+**Como** um professor administrador, **eu quero** gerenciar contas de monitores **para que** eu possa controlar o acesso ao sistema.
+
+---
+
+### US06 - Deletar contas de usuários
+**Como** um professor administrador, **eu quero** deletar contas de monitores **para que** eu possa retirar quem não deve ter mais controle do sistema.
+
+---
+
+### US07 - Publicar materiais de aula
 **Como** um professor ou monitor, **eu quero** criar e publicar materiais de aula **para que** os alunos tenham acesso aos conteúdos didáticos.  
 
 ---
 
-### US06 - Editar materiais de aula
+### US08 - Editar materiais de aula
 **Como** um professor ou monitor, **eu quero** editar materiais de aula já publicados **para que** eu possa atualizar e melhorar o conteúdo conforme necessário.  
 
 ---
 
-### US07 - Deletar materiais de aula
+### US09 - Deletar materiais de aula
 **Como** um professor ou monitor, **eu quero** deletar materiais de aula **para que** eu possa remover conteúdos desatualizados ou incorretos.  
 
 ---
 
-### US08 - Versionamento de Conteúdo
+### US10 - Versionamento de Conteúdo
 **Como** um professor ou monitor, **eu quero** ter um histórico de versões do conteúdo **para que** eu possa rastrear mudanças e reverter alterações quando necessário.
 
 **Critérios de Aceitação:**
@@ -67,22 +71,22 @@
 
 ---
 
-### US09 - Favoritar repositórios
+### US11 - Favoritar repositórios
 **Como** um aluno, **eu quero** salvar referências a repositórios do GitHub **para que** eu possa acessar rapidamente recursos úteis para meus estudos.  
 
 ---
 
-### US10 - Publicar Avisos
+### US12 - Publicar Avisos
 **Como** um professor ou monitor, **eu quero** criar e publicar avisos importantes **para que** os alunos sejam informados sobre atualizações e eventos.  
 
 ---
 
-### US11 - Editar Avisos
+### US13 - Editar Avisos
 **Como** um professor ou monitor, **eu quero** editar avisos já publicados **para que** eu possa atualizar informações conforme necessário.  
 
 ---
 
-### US12 - Deletar Avisos
+### US14 - Deletar Avisos
 **Como** um professor ou monitor, **eu quero** deletar avisos **para que** eu possa remover informações desatualizadas.  
 
 ---
