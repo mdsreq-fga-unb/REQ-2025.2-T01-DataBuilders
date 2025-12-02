@@ -29,27 +29,55 @@ model User {
   notices       Notice[]
 }
 
+enum MaterialType {
+  slides
+  video
+  pdf
+  codigo
+  plano_de_ensino
+  cronograma
+  materal_complementar
+  lista
+  livro
+}
+
+enum MaterialStatus {
+  Publicado
+  Rascunho
+}
+
 model Material {
-  id          String    @id @default(cuid())
+  id          String         @id @default(uuid())
   title       String
-  description String?
-  contentUrl  String? // link para arquivo ou storage
-  format      String? // pdf, md, slides, code, etc
+  description String
+  type        MaterialType   
+  contentUrl  String        
+  topic       String?        
+  period      String?        
+  status      MaterialStatus @default(Publicado)
+  version     String         @default("v1.0") 
+  downloads   Int            @default(0)
+  isFavorite  Boolean        @default(false)
+  additionalInfo String?    
   authorId    String
-  author      User      @relation(fields: [authorId], references: [id], name: "authorMaterials")
-  versions    Version[]
+  author      User      @relation("authorMaterials", fields: [authorId], references: [id])
+  deleted     Boolean   @default(false) 
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
-  deleted     Boolean   @default(false)
+  versions    Version[]
+  @@map("materials")
 }
 
 model Version {
-  id         String   @id @default(cuid())
+  id         String   @id @default(uuid())
   materialId String
-  material   Material @relation(fields: [materialId], references: [id])
-  editedBy   String
-  diff       String? // resumo/diff ou JSON
+  editedBy   String   
+  diff       String   
   createdAt  DateTime @default(now())
+
+  material   Material @relation(fields: [materialId], references: [id])
+
+  @@map("versions")
 }
 
 model RepoFavorite {
