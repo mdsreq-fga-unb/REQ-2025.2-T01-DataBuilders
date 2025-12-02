@@ -52,6 +52,8 @@ nav:
     - Requisitos de Software: visao_produto/requisitos.md
     - DoR e DoD: visao_produto/dor_e_dod.md
     - User Stories: visao_produto/user_stories.md
+    - **Casos de Uso: visao_produto/casos_de_uso.md**
+    - **Matriz de Rastreabilidade: visao_produto/matriz_rastreabilidade.md**
     - Product Backlog: visao_produto/product_backlog.md
     - Protótipo: visao_produto/prototipo.md
     - Lições Aprendidas: visao_produto/licoes.md
